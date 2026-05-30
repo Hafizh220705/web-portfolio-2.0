@@ -15,58 +15,23 @@ export default function ProjectSection() {
       id="project"
       className="relative w-full py-16 md:py-24 bg-neo-blue border-b-4 border-black overflow-hidden"
     >
-      {/* ── Neo-Brutalist Background Pattern ── */}
+      {/* ── Background ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        {/* Dot grid */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.12]" xmlns="http://www.w3.org/2000/svg">
+        {/* Subtle dot grid texture */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.10]" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="2" fill="black" />
+            <pattern id="dot-grid-proj" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="1.5" cy="1.5" r="1.5" fill="black" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#dot-grid)" />
+          <rect width="100%" height="100%" fill="url(#dot-grid-proj)" />
         </svg>
 
-        {/* Diagonal stripe accent — kiri atas */}
-        <svg className="absolute -top-10 -left-10 opacity-[0.07]" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <line
-              key={i}
-              x1={i * 28} y1="0"
-              x2={i * 28 - 320} y2="320"
-              stroke="black" strokeWidth="10"
-            />
-          ))}
-        </svg>
+        {/* Top accent bar */}
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-black/10" />
 
-        {/* Diagonal stripe accent — kanan bawah */}
-        <svg className="absolute -bottom-10 -right-10 opacity-[0.07]" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <line
-              key={i}
-              x1={i * 28} y1="0"
-              x2={i * 28 - 320} y2="320"
-              stroke="black" strokeWidth="10"
-            />
-          ))}
-        </svg>
-
-        {/* Bold geometric shapes */}
-        <div className="absolute top-8 right-12 w-24 h-24 border-4 border-black/20 rotate-12" />
-        <div className="absolute top-16 right-20 w-14 h-14 bg-black/10 rotate-45" />
-        <div className="absolute bottom-12 left-16 w-32 h-32 border-4 border-black/15 -rotate-6" />
-        <div className="absolute bottom-20 left-8 w-10 h-10 bg-black/10 rotate-12" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-[6px] border-black/5 rotate-45" />
-
-        {/* Zigzag bottom border */}
-        <svg className="absolute bottom-0 left-0 w-full opacity-20" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <polyline
-            points={Array.from({ length: 200 }, (_, i) =>
-              `${i * 20},${i % 2 === 0 ? 0 : 16}`
-            ).join(' ')}
-            fill="none" stroke="black" strokeWidth="2"
-          />
-        </svg>
+        {/* Bottom accent bar */}
+        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-black/10" />
       </div>
 
       {/* ── Main Content ── */}

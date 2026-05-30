@@ -58,3 +58,29 @@
     background-size: 40px 40px;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Loading Screen ↔ Page Entrance Coordination
+   ───────────────────────────────────────────── */
+
+/* Hide page content while loading screen is active */
+html.loading .page-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Entrance animation once loading screen slides away */
+html.page-loaded .page-content {
+  animation: pageEnter 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

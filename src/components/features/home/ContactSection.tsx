@@ -19,7 +19,7 @@ export default function ContactSection() {
   const { ref, inView } = useInViewOnce({ threshold: 0.08 });
 
   return (
-    <section id="contact" className="relative w-full py-20 bg-neo-bg bg-dot-pattern font-sora border-b-4 border-black">
+    <section id="contact" className="relative w-full py-20 bg-neo-bg bg-dot-pattern font-sora">
       <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10">
 
         {/* Title */}
@@ -43,9 +43,9 @@ export default function ContactSection() {
             <div className="border-4 border-black bg-white p-8 shadow-neo transform -rotate-1 hover:rotate-0 transition-transform duration-300">
               <h3 className="text-2xl font-black uppercase mb-6 tracking-tight">Let&apos;s Collaborate!</h3>
               <p className="font-jakarta text-sm md:text-base font-semibold text-slate-700 leading-relaxed mb-8">
-                Saat ini saya sedang menempuh semester 6 di Teknik Informatika UNPAD dengan fokus pada Data Science
-                dan Backend Development. Saya terbuka untuk peluang magang, proyek kolaborasi, atau sekadar diskusi
-                teknologi.
+                Currently in my 6th semester studying Computer Science at UNPAD, with a focus on Data Science
+                and Backend Development. I&apos;m open to internship opportunities, collaborative projects,
+                or simply a good tech discussion.
               </p>
 
               <div className="space-y-4">
@@ -135,12 +135,7 @@ export default function ContactSection() {
           </div>
         </div>
 
-        {/* Footer note */}
-        <div className="mt-24 text-center">
-          <p className="font-black text-xs md:text-sm uppercase tracking-widest opacity-40">
-            © 2026 Hafizh Fadhl Muhammad • Built with Next.js & Neo-Brutalism
-          </p>
-        </div>
+
       </div>
     </section>
   );

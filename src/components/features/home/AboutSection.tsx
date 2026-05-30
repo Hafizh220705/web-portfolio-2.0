@@ -87,20 +87,17 @@ export default function AboutSection() {
           {/* ── Left ── */}
           <div className="flex flex-col items-start lg:pr-4">
 
-            <motion.span
-              variants={badgeVariants}
-              className="inline-block border-2 border-black bg-neo-pink px-3 py-1 text-xs md:text-sm font-black uppercase tracking-[0.2em] shadow-neo-sm -rotate-2 transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-neo"
-            >
-              About Me
-            </motion.span>
 
-            <motion.div variants={popUpVariants} className="mt-3 md:mt-4">
+
+            <motion.div variants={popUpVariants} className="mt-6 md:mt-6">
               <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-black uppercase leading-[1.1] tracking-tighter text-black">
-                Turning <br />
+                Turning{' '}
                 <span className="inline-block border-[3px] border-black bg-neo-blue px-2 text-white shadow-neo-sm -rotate-1 hover:rotate-0 transition-transform duration-300 align-middle">
                   Data
                 </span>{' '}
-                Into <br />
+                <br />
+                Into{' '}
+                <br />
                 Actionable{' '}
                 <span className="inline-block border-[3px] border-black bg-neo-pink px-2 text-black shadow-neo-sm rotate-1 hover:rotate-0 transition-transform duration-300 align-middle mt-1">
                   Insights
