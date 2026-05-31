@@ -6,9 +6,9 @@ import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 // ── Constants ─────────────────────────────────────────────────────
 const CONTACT_ITEMS = [
-  { icon: <FaEnvelope />, color: 'bg-neo-yellow', label: 'Email', value: 'hafizhfadhl22@gmail.com' },
-  { icon: <FaWhatsapp />, color: 'bg-neo-green', label: 'WhatsApp', value: '+62 822-9076-4213' },
-  { icon: <FaMapMarkerAlt />, color: 'bg-neo-blue', label: 'Location', value: 'Indonesia, Bandung' },
+  { icon: <FaEnvelope />,     color: 'bg-neo-yellow', label: 'Email',    value: 'hafizhfadhl22@gmail.com', href: 'mailto:hafizhfadhl22@gmail.com'               },
+  { icon: <FaWhatsapp />,     color: 'bg-neo-green',  label: 'WhatsApp', value: '+62 822-9076-4213',       href: 'https://wa.me/6282290764213'                  },
+  { icon: <FaMapMarkerAlt />, color: 'bg-neo-blue',   label: 'Location', value: 'Indonesia, Bandung',      href: 'https://maps.google.com/?q=Bandung,Indonesia' },
 ];
 
 const SOCIAL_LINKS = [
@@ -171,7 +171,7 @@ export default function ContactSection() {
           <div className="flex flex-col gap-5">
             <div className="border-4 border-black bg-white p-5 shadow-neo transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex-1 flex flex-col justify-center">
               {/* Title with highlights */}
-              <h3 className="text-2xl font-black uppercase mb-6 tracking-tight leading-snug">
+              <h3 className="text-3xl font-black uppercase mb-6 tracking-tight leading-snug text-justify">
                 Ready to turn your{' '}
                 <span className="inline-block border-[2px] border-black bg-neo-blue px-1 text-white -rotate-1 hover:rotate-0 transition-transform duration-200">
                   data
@@ -183,9 +183,9 @@ export default function ContactSection() {
                 ?
               </h3>
 
-              {/* Contact items + Social links — 2 kolom berdampingan */}
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {/* Kolom kiri: Email, WhatsApp, Location — CTA */}
+              {/* Contact items + Social links — 2 kolom berdampingan, full CTA */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Kolom kiri: Email, WhatsApp, Location */}
                 <div className="flex flex-col gap-3">
                   {CONTACT_ITEMS.map((item, i) => (
                     <a
@@ -194,14 +194,18 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={item.label}
-                      className="flex items-center gap-3 group"
+                      className={`flex items-center gap-3 border-2 border-black ${item.color} px-3 py-2.5 shadow-neo-sm hover:-translate-y-0.5 hover:shadow-neo transition-all cursor-pointer group`}
                     >
-                      <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center border-2 border-black ${item.color} shadow-neo-sm group-hover:shadow-neo group-hover:-translate-y-0.5 transition-all`}>
-                        <span className={`text-xl ${item.color === 'bg-neo-blue' ? 'text-white' : ''}`}>{item.icon}</span>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs font-black uppercase opacity-50">{item.label}</p>
-                        <p className="text-sm font-black leading-tight truncate">{item.value}</p>
+                      <span className={`text-xl flex-shrink-0 ${item.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                        {item.icon}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-[9px] font-black uppercase opacity-60 ${item.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                          {item.label}
+                        </p>
+                        <p className={`text-xs font-black truncate ${item.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                          {item.value}
+                        </p>
                       </div>
                     </a>
                   ))}
@@ -216,16 +220,18 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex items-center gap-3 group"
+                      className={`flex items-center gap-3 border-2 border-black ${social.color} px-3 py-2.5 shadow-neo-sm hover:-translate-y-0.5 hover:shadow-neo transition-all cursor-pointer group`}
                     >
-                      <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center border-2 border-black ${social.color} shadow-neo-sm group-hover:shadow-neo group-hover:-translate-y-0.5 transition-all`}>
-                        <span className={`text-xl ${social.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
-                          {social.icon}
-                        </span>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs font-black uppercase opacity-50">{social.label}</p>
-                        <p className="text-sm font-black leading-tight truncate">@{social.username}</p>
+                      <span className={`text-xl flex-shrink-0 ${social.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                        {social.icon}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-[9px] font-black uppercase opacity-60 ${social.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                          {social.label}
+                        </p>
+                        <p className={`text-xs font-black truncate ${social.color === 'bg-neo-blue' ? 'text-white' : 'text-black'}`}>
+                          @{social.username}
+                        </p>
                       </div>
                     </a>
                   ))}
