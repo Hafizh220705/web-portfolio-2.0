@@ -40,6 +40,8 @@ export default function Footer() {
     { name: 'Experience', href: '#experience' },
     { name: 'Education',  href: '#education'  },
     { name: 'Skills',     href: '#skills'     },
+    { name: 'Certificate',href: '#certificate'},
+    { name: 'Volunteer',  href: '#volunteer'  },
     { name: 'Contact',    href: '#contact'    },
   ];
 

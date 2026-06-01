@@ -2,84 +2,71 @@
 
 import type { ComponentType } from 'react';
 import {
-  FaPython, FaJava, FaJs, FaPhp, FaDatabase, FaCode, FaRobot, FaMicrochip,
+  FaPython, FaJava, FaJs, FaPhp, FaDatabase, FaCode, FaRobot,
 } from 'react-icons/fa';
 import {
-  SiTypescript, SiCplusplus, SiNextdotjs, SiLaravel, SiSupabase,
-  SiPrisma, SiTensorflow, SiScikitlearn, SiArduino,
+  SiTypescript, SiCplusplus, SiTensorflow, SiScikitlearn,
 } from 'react-icons/si';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
-// Store icon as ComponentType, not rendered JSX — avoids serialization issues
 type SkillItem = {
   name: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Icon: ComponentType<any>;
+  hoverClass: string;
 };
 
-type SkillGroup = {
-  category: string;
-  color: string;
-  skills: SkillItem[];
-};
-
-const SKILL_GROUPS: SkillGroup[] = [
-  {
-    category: 'Programming Languages',
-    color: 'bg-neo-blue',
-    skills: [
-      { name: 'Python',     Icon: FaPython },
-      { name: 'Java',       Icon: FaJava },
-      { name: 'JavaScript', Icon: FaJs },
-      { name: 'TypeScript', Icon: SiTypescript },
-      { name: 'PHP',        Icon: FaPhp },
-      { name: 'C++',        Icon: SiCplusplus },
-      { name: 'SQL',        Icon: FaDatabase },
-    ],
-  },
-  {
-    category: 'Data Science & ML',
-    color: 'bg-neo-pink',
-    skills: [
-      { name: 'TensorFlow',           Icon: SiTensorflow },
-      { name: 'Scikit-Learn',         Icon: SiScikitlearn },
-      { name: 'Sentiment Analysis',   Icon: FaRobot },
-      { name: 'Signal Processing',    Icon: FaCode },
-      { name: 'IndoBERT',             Icon: FaRobot },
-      { name: 'MediaPipe',            Icon: FaCode },
-    ],
-  },
-  {
-    category: 'Web & Backend Dev',
-    color: 'bg-neo-green',
-    skills: [
-      { name: 'Next.js',        Icon: SiNextdotjs },
-      { name: 'Laravel',        Icon: SiLaravel },
-      { name: 'Supabase',       Icon: SiSupabase },
-      { name: 'Prisma ORM',     Icon: SiPrisma },
-      { name: 'API Dev',        Icon: FaDatabase },
-      { name: 'DB Design',      Icon: FaDatabase },
-    ],
-  },
-  {
-    category: 'Tools & Others',
-    color: 'bg-neo-yellow',
-    skills: [
-      { name: 'Arduino',         Icon: SiArduino },
-      { name: 'Robotics',        Icon: FaMicrochip },
-      { name: 'Embedded Sys',    Icon: FaMicrochip },
-      { name: 'Git',             Icon: FaCode },
-      { name: 'Linux',           Icon: FaCode },
-    ],
-  },
+const DATA_SCIENCE_SKILLS: SkillItem[] = [
+  { name: 'TensorFlow',           Icon: SiTensorflow, hoverClass: 'hover:bg-[#FF6F00] hover:text-white' },
+  { name: 'Scikit-Learn',         Icon: SiScikitlearn, hoverClass: 'hover:bg-[#F7931E] hover:text-white' },
+  { name: 'Sentiment Analysis',   Icon: FaRobot, hoverClass: 'hover:bg-neo-pink hover:text-white' },
+  { name: 'Signal Processing',    Icon: FaCode, hoverClass: 'hover:bg-neo-blue hover:text-white' },
+  { name: 'IndoBERT',             Icon: FaRobot, hoverClass: 'hover:bg-neo-green hover:text-black' },
+  { name: 'MediaPipe',            Icon: FaCode, hoverClass: 'hover:bg-[#00C3A5] hover:text-white' },
 ];
+
+const PROG_LANGUAGES: SkillItem[] = [
+  { name: 'Python',     Icon: FaPython, hoverClass: 'hover:bg-[#3776AB] hover:text-white' },
+  { name: 'Java',       Icon: FaJava, hoverClass: 'hover:bg-[#ED8B00] hover:text-white' },
+  { name: 'JavaScript', Icon: FaJs, hoverClass: 'hover:bg-[#F7DF1E] hover:text-black' },
+  { name: 'TypeScript', Icon: SiTypescript, hoverClass: 'hover:bg-[#3178C6] hover:text-white' },
+  { name: 'PHP',        Icon: FaPhp, hoverClass: 'hover:bg-[#777BB4] hover:text-white' },
+  { name: 'C++',        Icon: SiCplusplus, hoverClass: 'hover:bg-[#00599C] hover:text-white' },
+  { name: 'SQL',        Icon: FaDatabase, hoverClass: 'hover:bg-[#336791] hover:text-white' },
+];
+
+const MarqueeTrack = ({ skills, direction }: { skills: SkillItem[], direction: 'left' | 'right' }) => {
+  const animationClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
+  
+  return (
+    <div className="flex w-full overflow-hidden relative py-4">
+      <div className="flex w-max">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className={`flex gap-4 md:gap-8 pr-4 md:pr-8 min-w-max ${animationClass}`}>
+            {skills.map((skill, idx) => (
+              <div 
+                key={`${i}-${idx}`} 
+                className={`flex flex-col items-center justify-center gap-3 px-6 py-4 border-4 border-black bg-white shadow-neo transition-all duration-300 cursor-pointer ${skill.hoverClass} min-w-[140px]`}
+              >
+                <skill.Icon className="text-3xl" />
+                <span className="text-lg font-black uppercase tracking-tighter">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function SkillsSection() {
   const { ref, inView } = useInViewOnce({ threshold: 0.08 });
 
   return (
-    <section id="skills" className="relative w-full py-20 bg-neo-bg bg-grid-pattern border-b-4 border-black font-sora">
-      <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10">
+    <section id="skills" className="relative w-full py-20 md:py-24 flex flex-col justify-center bg-neo-blue bg-stripes-pattern border-b-4 border-black font-sora overflow-x-hidden">
+      <div ref={ref} className="w-full relative z-10">
 
         {/* Title */}
         <div
@@ -92,36 +79,16 @@ export default function SkillsSection() {
           </h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {SKILL_GROUPS.map((group, index) => (
-            <div
-              key={index}
-              style={{ transitionDelay: inView ? `${index * 100 + 150}ms` : '0ms' }}
-              className={`border-4 border-black bg-white p-6 md:p-8 shadow-neo hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 ease-out ${
-                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <div
-                className={`inline-block border-2 border-black ${group.color} px-4 py-1 text-sm font-black uppercase mb-6 shadow-neo-sm -rotate-1`}
-              >
-                {group.category}
-              </div>
-
-              <div className="flex flex-wrap gap-4 md:gap-6">
-                {group.skills.map((skill) => (
-                  <div key={skill.name} className="flex flex-col items-center gap-2 group cursor-default">
-                    <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center border-2 md:border-4 border-black bg-white shadow-neo-sm group-hover:-translate-y-1 group-hover:shadow-neo group-hover:bg-neo-bg group-hover:rotate-3 transition-all duration-200">
-                      <skill.Icon className="text-2xl md:text-3xl text-black" />
-                    </div>
-                    <span className="text-[10px] md:text-xs font-black uppercase text-center tracking-tighter">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+        {/* Marquee Tracks */}
+        <div
+          className={`transition-all duration-700 ease-out delay-150 ${
+            inView ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="flex flex-col gap-8 md:gap-12">
+            <MarqueeTrack skills={DATA_SCIENCE_SKILLS} direction="left" />
+            <MarqueeTrack skills={PROG_LANGUAGES} direction="right" />
+          </div>
         </div>
       </div>
     </section>

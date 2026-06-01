@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { name: 'Skills',      href: '#skills' }, 
   { name: 'Certificate', href: '#certificate' },
   { name: 'Volunteer',   href: '#volunteer' },
-  { name: 'GitHub',      href: '#github' },
   { name: 'Contact',     href: '#contact' },
 ];
 
