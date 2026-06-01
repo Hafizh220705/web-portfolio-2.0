@@ -70,12 +70,6 @@ export default function CertificateSection() {
     
     setIsAnimating(true);
     
-    // Smooth scroll agar POV user tidak terlempar ke bawah saat item lebih sedikit
-    const section = document.getElementById('certificate');
-    if (section) {
-      const y = section.getBoundingClientRect().top + window.scrollY - 80; // offset untuk header
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
 
     setTimeout(() => {
       setCurrentPage(newPage);
@@ -87,6 +81,11 @@ export default function CertificateSection() {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+
+  const paddedItems = [...currentItems];
+  while (paddedItems.length < ITEMS_PER_PAGE) {
+    paddedItems.push(null as any);
+  }
 
   const nextPage = () => handlePageChange(currentPage < totalPages ? currentPage + 1 : 1);
   const prevPage = () => handlePageChange(currentPage > 1 ? currentPage - 1 : totalPages);
@@ -124,15 +123,25 @@ export default function CertificateSection() {
         </div>
 
         {/* Grid of 4 Cards */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 min-h-[400px] transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          {currentItems.map((cert, index) => (
-            <div
-              key={`${currentPage}-${index}`}
-              className={`flex flex-col border-4 border-black bg-white shadow-neo hover:-translate-y-2 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 ease-out ${
-                inView && !isAnimating ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
-              }`}
-              style={{ transitionDelay: isAnimating ? '0ms' : `${index * 100}ms` }}
-            >
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+          {paddedItems.map((cert, index) => {
+            if (!cert) {
+              return (
+                <div key={`empty-${index}`} className="invisible pointer-events-none flex flex-col">
+                  <div className="h-48 md:h-64 mb-6"></div>
+                  <div className="p-6 h-[200px]"></div>
+                </div>
+              );
+            }
+            
+            return (
+              <div
+                key={`${currentPage}-${index}`}
+                className={`flex flex-col border-4 border-black bg-white shadow-neo hover:-translate-y-2 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 ease-out ${
+                  inView && !isAnimating ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+                }`}
+                style={{ transitionDelay: isAnimating ? '0ms' : `${index * 100}ms` }}
+              >
               {/* Photo Area */}
               <div className="h-48 md:h-64 border-b-4 border-black bg-neo-bg flex items-center justify-center overflow-hidden relative group">
                 {cert.imageUrl ? (
@@ -181,7 +190,8 @@ export default function CertificateSection() {
                 )}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Pagination Controls */}

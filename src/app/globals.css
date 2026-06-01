@@ -46,6 +46,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
   body {
     background-color: var(--color-neo-bg);
     color: black;

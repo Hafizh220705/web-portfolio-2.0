@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 const NAV_LINKS = [
-  { name: 'Project',     href: '#project' },
-  { name: 'Experience',  href: '#experience' },
-  { name: 'Education',   href: '#education' },
-  { name: 'Skills',      href: '#skills' }, 
-  { name: 'Certificate', href: '#certificate' },
-  { name: 'Volunteer',   href: '#volunteer' },
-  { name: 'Contact',     href: '#contact' },
+  { name: 'Project',     href: '/#project' },
+  { name: 'Experience',  href: '/#experience' },
+  { name: 'Education',   href: '/#education' },
+  { name: 'Skills',      href: '/#skills' }, 
+  { name: 'Certificate', href: '/#certificate' },
+  { name: 'Volunteer',   href: '/#volunteer' },
+  { name: 'Contact',     href: '/#contact' },
 ];
 
 const headerVariants: Variants = {
@@ -81,7 +81,7 @@ export default function Header() {
             <motion.div key={link.name} variants={itemVariants}>
               <Link
                 href={link.href}
-                className="px-2.5 py-1.5 font-bold text-xs xl:text-sm uppercase border-2 border-transparent hover:border-black hover:bg-neo-pink hover:-translate-y-1 hover:shadow-neo-sm transition-all whitespace-nowrap"
+                className="px-2.5 py-1.5 font-bold text-xs xl:text-sm uppercase border-2 border-black/0 bg-transparent shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] hover:border-black hover:bg-neo-pink hover:-translate-y-1 hover:shadow-neo-sm focus:outline-none transition-all duration-300 whitespace-nowrap"
               >
                 {link.name}
               </Link>
