@@ -87,8 +87,8 @@ export default function ExperienceSection() {
 
   const openModal = (item: Experience) => {
     setSelectedItem(item);
-    setModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => setModalOpen(true), 10); // Delay so mount animation plays
   };
 
   const closeModal = () => {
@@ -163,7 +163,7 @@ export default function ExperienceSection() {
                       {/* Detail Button */}
                       <button
                         onClick={() => openModal(exp)}
-                        className="inline-flex items-center gap-2 border-2 border-black bg-black text-white px-4 py-2 text-xs font-black uppercase shadow-neo-sm hover:bg-white hover:text-black hover:-translate-y-1 transition-all w-fit"
+                        className="cursor-pointer inline-flex items-center gap-2 border-2 border-black bg-black text-white px-4 py-2 text-xs font-black uppercase shadow-neo-sm hover:bg-white hover:text-black hover:-translate-y-1 transition-all w-fit"
                       >
                         Detail <FaArrowRight />
                       </button>
@@ -177,7 +177,7 @@ export default function ExperienceSection() {
       </div>
 
       {/* Modal Overlay */}
-      {modalOpen && (
+      {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div
             className={`absolute inset-0 bg-neo-bg/90 backdrop-blur-sm transition-opacity duration-300 ${modalOpen ? 'opacity-100' : 'opacity-0'}`}

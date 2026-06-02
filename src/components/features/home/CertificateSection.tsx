@@ -18,8 +18,8 @@ const CERTIFICATES: Certificate[] = [
   {
     title:    'Belajar Dasar AI',
     issuer:   'Dicoding ',
-    date:     'April 2029',
-    category: 'Technical',
+    date:     'Apr 2029',
+    category: 'Course',
     color:    'bg-neo-blue',
     imageUrl: 'images/certificates/certif1.png', // Tambahkan URL/path foto sertifikat
     link:     'https://drive.google.com/file/d/13mmZ-lXJAKiXPCIK5VLMXVc2eX8cUVwC/view?usp=sharing', // Contoh link, silakan diganti dengan link asli
@@ -27,32 +27,83 @@ const CERTIFICATES: Certificate[] = [
   {
     title:    'Belajar Machine Learning untuk Pemula',
     issuer:   'Dicoding',
-    date:     'April 2029',
-    category: 'Technical',
+    date:     'Apr 2029',
+    category: 'Course',
     color:    'bg-neo-green',
     imageUrl: 'images/certificates/certif2.png',
     link:     'https://drive.google.com/file/d/1lhg_nLVdgePKODCFB-pK09BSEruxAwlQ/view?usp=sharing'
   },
   {
-    title:    'Laboratory Teaching Assistant',
-    issuer:   'Object-Oriented Programming – Universitas Padjadjaran',
-    date:     '2025 – 2026',
-    category: 'Academic',
+    title:    'Microsoft Power BI Data Analyst Associate (PL-300) Cert Prep by Microsoft Press',
+    issuer:   'Linkedin Learning',
+    date:     '-',
+    category: 'Course',
+    color:    'bg-neo-pink',
+    imageUrl: 'images/certificates/certif3.png',
+    link:     'https://drive.google.com/file/d/1V7A7u3_NspjRsSebGdPYjz83AbWfF8IH/view?usp=sharing'
+  },
+  {
+    title:    'Building Deep Learning Applications with Keras',
+    issuer:   'Linkedin Learning',
+    date:     '-',
+    category: 'Course',
     color:    'bg-neo-yellow',
+    imageUrl: 'images/certificates/certif4.png',
+    link:     'https://drive.google.com/file/d/1YI8hpa5BCBR2nYC7U3QyscMt1K6vN1PZ/view?usp=sharing'
   },
   {
-    title:    'Data Science Competition Participant',
-    issuer:   'MCF ITB – Institut Teknologi Bandung',
-    date:     '2025',
-    category: 'Competition',
+    title:    'SQL (Advanced)',
+    issuer:   'HackerRank',
+    date:     '-',
+    category: 'Technical',
     color:    'bg-neo-pink',
+    imageUrl: 'images/certificates/certif5.png',
+    link:     'https://drive.google.com/file/d/16W7OfhlLquVuCAiWmmXUkuRtGyQWOVz8/view?usp=sharing'
   },
   {
-    title:    'Data Science Competition Participant',
-    issuer:   'MCF ITB – Institut Teknologi Bandung',
-    date:     '2025',
-    category: 'Competition',
+    title:    'Python For Data Science',
+    issuer:   'MySkill',
+    date:     '-',
+    category: 'Course',
+    color:    'bg-neo-blue',
+    imageUrl: 'images/certificates/certif6.png',
+    link:     'https://drive.google.com/file/d/1AhQ3OsL9ItvWHueHO1k5pfjeIbn7x1TZ/view?usp=sharing'
+  },
+  {
+    title:    'Career Essentials in Github Professional Certificate',
+    issuer:   'Linkedin Learning',
+    date:     '-',
+    category: 'Course',
+    color:    'bg-neo-green',
+    imageUrl: 'images/certificates/certif7.png',
+    link:     'https://drive.google.com/file/d/14IpNb2efu2qRklfaHf4pjqFLD665f0-L/view?usp=sharing'
+  },
+  {
+    title:    'Certified Developer',
+    issuer:   'Alibaba Cloud',
+    date:     'Mar 2026',
+    category: 'Technical',
+    color:    'bg-neo-yellow',
+    imageUrl: 'images/certificates/certif8.png',
+    link:     'https://drive.google.com/file/d/14IpNb2efu2qRklfaHf4pjqFLD665f0-L/view?usp=sharing'
+  },
+  {
+    title:    'Google Looker Studio',
+    issuer:   'MySkill',
+    date:     '-',
+    category: 'Course',
+    color:    'bg-neo-blue',
+    imageUrl: 'images/certificates/certif9.png',
+    link:     'https://drive.google.com/file/d/1fowGRWsUZxFGjDY8urRnZG61FkbqjZZX/view?usp=sharing'
+  },
+  {
+    title:    'SQL For Data Analysis',
+    issuer:   'MySkill',
+    date:     '-',
+    category: 'Course',
     color:    'bg-neo-pink',
+    imageUrl: 'images/certificates/certif10.png',
+    link:     'https://drive.google.com/file/d/1OnjrjqEodyzm22u1m6Hb97yTlac0FO3w/view?usp=sharing'
   },
 ];
 
