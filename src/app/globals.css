@@ -54,7 +54,17 @@
     background-color: var(--color-neo-bg);
     color: black;
     -webkit-font-smoothing: antialiased;
+    cursor: url('/cursor-default.svg') 3 3, auto;
   }
+  
+  a, button, [role="button"], .cursor-pointer {
+    cursor: url('/cursor-pointer.svg') 3 3, pointer !important;
+  }
+  
+  input, textarea, [contenteditable="true"] {
+    cursor: text !important;
+  }
+  
   ::selection {
     background-color: var(--color-neo-pink);
     color: black;

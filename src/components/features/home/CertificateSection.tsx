@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FaAward, FaExternalLinkAlt, FaChevronLeft, FaChevronRight, FaImage, FaBuilding, FaCertificate } from 'react-icons/fa';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
@@ -111,6 +111,8 @@ const ITEMS_PER_PAGE = 2;
 
 export default function CertificateSection() {
   const { ref, inView } = useInViewOnce({ threshold: 0.08 });
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [lockedHeight, setLockedHeight] = useState<number | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -119,13 +121,25 @@ export default function CertificateSection() {
   const handlePageChange = (newPage: number) => {
     if (newPage === currentPage || isAnimating) return;
     
+    if (gridRef.current) {
+      setLockedHeight(gridRef.current.offsetHeight);
+    }
     setIsAnimating(true);
-    
 
+    // Step 1: swap content while invisible
     setTimeout(() => {
       setCurrentPage(newPage);
+    }, 350);
+
+    // Step 2: fade in new content
+    setTimeout(() => {
       setIsAnimating(false);
-    }, 400); // durasi animasi out
+    }, 400);
+
+    // Step 3: release height lock after fade-in completes
+    setTimeout(() => {
+      setLockedHeight(undefined);
+    }, 750);
   };
 
   const currentItems = CERTIFICATES.slice(
@@ -144,7 +158,7 @@ export default function CertificateSection() {
   return (
     <section id="certificate" className="relative w-full py-20 bg-white border-b-4 border-black font-sora overflow-hidden">
       {/* Neo-brutalism Decorative Shapes */}
-      <div className="absolute top-12 left-4 md:left-12 w-16 h-16 bg-neo-blue border-4 border-black rounded-full shadow-neo-sm pointer-events-none animate-bounce-slow"></div>
+      <div className="absolute top-12 left-4 md:left-12 w-16 h-16 bg-neo-blue border-4 border-black rounded-full shadow-neo-sm pointer-events-none"></div>
       <div className="absolute bottom-12 right-4 md:right-16 w-20 h-20 bg-neo-pink border-4 border-black rotate-12 shadow-neo pointer-events-none"></div>
       <div className="absolute top-1/2 left-2 md:left-6 w-10 h-10 bg-neo-yellow border-4 border-black rotate-45 shadow-neo-sm pointer-events-none"></div>
       
@@ -154,7 +168,7 @@ export default function CertificateSection() {
       <div className="absolute top-[40%] right-2 md:right-8 w-8 h-8 bg-black border-2 border-black rotate-12 pointer-events-none"></div>
       <div className="absolute top-[20%] right-[10%] w-24 h-6 bg-neo-pink border-4 border-black -rotate-12 shadow-neo-sm pointer-events-none hidden md:block"></div>
       <div className="absolute bottom-[20%] left-[10%] w-6 h-20 bg-neo-green border-4 border-black rotate-12 shadow-neo-sm pointer-events-none hidden md:block"></div>
-      <div className="absolute bottom-[40%] right-8 md:right-12 w-10 h-10 bg-neo-yellow border-4 border-black rounded-full shadow-neo pointer-events-none animate-bounce-slow" style={{ animationDelay: '0.5s' }}></div>
+      <div className="absolute bottom-[40%] right-8 md:right-12 w-10 h-10 bg-neo-yellow border-4 border-black rounded-full shadow-neo pointer-events-none"></div>
       
       <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10">
 
@@ -166,7 +180,7 @@ export default function CertificateSection() {
         >
           {/* Ornamen Dekat Judul */}
           <div className="absolute -top-6 left-10 md:left-[35%] w-8 h-8 bg-neo-yellow border-4 border-black rotate-12 shadow-neo-sm pointer-events-none"></div>
-          <div className="absolute -bottom-4 right-10 md:right-[32%] w-6 h-6 bg-neo-green border-4 border-black rounded-full shadow-neo-sm pointer-events-none animate-bounce-slow"></div>
+          <div className="absolute -bottom-4 right-10 md:right-[32%] w-6 h-6 bg-neo-green border-4 border-black rounded-full shadow-neo-sm pointer-events-none"></div>
 
           <h2 className="inline-block relative z-10 border-4 border-black bg-neo-pink px-8 py-3 text-4xl md:text-6xl font-black uppercase tracking-tighter shadow-neo -rotate-2 hover:rotate-0 hover:-translate-y-1 transition-all">
             Certificates
@@ -174,7 +188,11 @@ export default function CertificateSection() {
         </div>
 
         {/* Grid of 4 Cards */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+        <div 
+          ref={gridRef}
+          style={{ minHeight: lockedHeight }}
+          className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+        >
           {paddedItems.map((cert, index) => {
             if (!cert) {
               return (

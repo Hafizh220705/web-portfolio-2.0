@@ -13,9 +13,10 @@ const EDUCATION = [
     score:      '3.78 / 4.00',
     logoUrl:    'https://www.unpad.ac.id/wp-content/uploads/2018/04/logo-unpad1.png',
     details: [
-      'Specializing in Software Engineering & Data Science.',
-      'Relevant Coursework: Algorithms & Data Structures, OOP, Database Systems, Web Programming, Data Mining, Machine Learning.',
-      'Active member of laboratory activities and academic workshops.',
+      'Relevant Coursework: Statistics, Data Mining, Artificial Intelligence, Decision Support Systems, Database Systems I & II, System Information, Operations Research, Numerical Methods, Linear Algebra.',
+      'Achievements:',
+      'Selected as Team Leader of Universitas Padjadjaran Delegation ("Warlok" Team) for GEMASTIK 2025 Data Mining Competition.',
+      'Semifinalist – Business Plan Competition by IFEST (Oct 2025).',
     ],
   },
   {
@@ -27,9 +28,11 @@ const EDUCATION = [
     score:      'Bootcamp',
     logoUrl:    'https://files.klob.id/public/mcois01/kugkz47g/Logo_Thumbnail_Blue_Colour_-_Alim_Anggono.png',
     details: [
-      'Comprehensive training covering Data Science lifecycle and advanced Machine Learning models.',
-      'Practical implementation using Python, Pandas, Scikit-Learn, and TensorFlow.',
-      'Developed end-to-end AI/ML solutions for real-world datasets.',
+      'Mastering advanced SQL for data analysis, including complex joins, subqueries, and window functions to extract and manipulate large-scale business datasets.',
+      'Conducting in-depth exploratory data analysis (EDA) and statistical hypothesis testing using Python (Pandas, NumPy, Scikit-learn) to identify trends, patterns, and anomalies within datasets.',
+      'Developing data storytelling and analytical insights through data visualization and unsupervised learning techniques, including customer segmentation and pattern discovery.',
+      'Applying supervised machine learning models and end-to-end data science workflows to solve business challenges, including demand forecasting, predictive classification, and model evaluation.',
+      'Gaining hands-on experience with deep learning (TensorFlow/PyTorch), NLP, time-series forecasting, and big data tools for processing and analyzing large-scale datasets.',
     ],
   },
 ];
@@ -100,12 +103,16 @@ export default function EducationSection() {
               </div>
 
               {/* Details */}
-              <div className="mt-auto pt-5 border-t-2 border-dashed border-black/20">
+              <div className="pt-5 mt-2 border-t-2 border-dashed border-black/20 flex-grow">
                 <ul className="space-y-2.5 pl-4 list-none font-jakarta text-[10px] md:text-xs font-semibold text-slate-800 leading-relaxed">
                   {edu.details.map((detail, i) => (
                     <li
                       key={i}
-                      className="relative before:content-[''] before:absolute before:-left-4 before:top-1.5 before:w-2 before:h-2 before:border-2 before:border-black before:bg-neo-pink"
+                      className={
+                        detail === 'Achievements:'
+                          ? "font-black text-black pt-2 -ml-4"
+                          : "relative before:content-[''] before:absolute before:-left-4 before:top-1.5 before:w-2 before:h-2 before:border-2 before:border-black before:bg-neo-pink"
+                      }
                     >
                       {detail}
                     </li>
