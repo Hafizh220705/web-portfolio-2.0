@@ -107,7 +107,7 @@ const CERTIFICATES: Certificate[] = [
   },
 ];
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 2;
 
 export default function CertificateSection() {
   const { ref, inView } = useInViewOnce({ threshold: 0.08 });

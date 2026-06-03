@@ -24,9 +24,14 @@ const VOLUNTEERS: VolunteerItem[] = [
     role: 'Head of Interest and Talent Department',
     organization: 'Himatif FMIPA Unpad',
     period: 'Jan 2025 – Dec 2025',
-    description: 'asdasdasda',
-    imageUrl: '',   // Tambahkan URL/path foto volunteer di sini
+    description:
+      `Led member development initiatives and coordinated 3 departmental programs while supervising 8 staff members to strengthen organizational engagement and talent development.
+    Initiated a free-access sports development program (KKM's Care) that increased participant attendance by 100% (from 10 to 20 members) through accessibility-focused program improvements.
+    Developed and managed the department's Instagram platform from scratch, publishing 67 content posts to expand external visibility and promote student talent initiatives.
+    Coordinated 71 committee members across a flagship tournament (INFORMATICSGRAM), achieving a 12% increase in participants (250 to 280) through large-scale publication and engagement strategies.`,
+    imageUrl: '/images/organization/photo1.png',   // Tambahkan URL/path foto volunteer di sini
     orgLogo: '/images/organization/org1.png',   // Tambahkan URL/path logo organisasi di sini
+    supportingImages: ['/images/organization/certif1.png', '/images/organization/photo2.png'],
     transparentLogo: true,
     category: 'Organization',
     color: 'bg-neo-blue',
@@ -37,9 +42,13 @@ const VOLUNTEERS: VolunteerItem[] = [
     organization: 'Informatics Sport Art And Game Tournament',
     period: 'Feb 2025 – May 2025',
     description:
-      '',
-    imageUrl: '',
+      `Served as one of three Project Supervisors, overseeing the overall execution of a large-scale student tournament.
+      Supervised and coordinated six divisions to ensure alignment with timelines, objectives, and operational standards.
+      Provided guidance and capacity building to Project Officers (POs) to support effective leadership and decision-making.
+      Contributed to the successful delivery of an event involving 300+ participants.`,
+    imageUrl: '/images/volunteer/photo1.png',
     orgLogo: '/images/volunteer/vol5.png',
+    supportingImages: ['/images/volunteer/certif1.png', '/images/volunteer/photo2.png'],
     category: 'Volunteer',
     color: 'bg-neo-pink',
     icon: <FaTools />,
@@ -49,9 +58,12 @@ const VOLUNTEERS: VolunteerItem[] = [
     organization: 'BEM FMIPA Unpad',
     period: 'May 2025 – Feb 2026',
     description:
-      '',
-    imageUrl: '',
+      `Analyzed survey datasets from 10+ organizational programs involving 50+ respondents per survey using Excel and Python to evaluate program effectiveness and participant satisfaction.
+      Performed comprehensive data cleaning, preprocessing, and quantitative analysis on organizational survey data to identify key behavioral patterns and opportunities for program optimization.
+      Generated analytical reports and data-driven recommendations that served as the primary basis for organizational decision-making and internal program performance evaluation.`,
+    imageUrl: '/images/organization/photo3.png',
     orgLogo: '/images/organization/org2.png',
+    supportingImages: ['/images/organization/certif2.png'],
     category: 'Organization',
     color: 'bg-neo-green',
     icon: <FaTools />,
@@ -346,13 +358,13 @@ export default function VolunteerSection() {
               {selectedItem.organization} • {selectedItem.period}
             </p>
 
-            <div className="flex flex-col md:flex-row gap-4 w-full h-full">
+            <div className="flex flex-col gap-4 w-full h-full">
               
-              {/* Left Column (w-2/3) */}
-              <div className="flex flex-col w-full md:w-2/3 gap-4">
+              {/* Top Row: Photos */}
+              <div className="flex flex-col md:flex-row gap-4 w-full h-auto md:h-[300px]">
                 
-                {/* Top Block: Large Photo */}
-                <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center relative min-h-[250px] md:min-h-[300px] overflow-hidden group">
+                {/* Main Photo */}
+                <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center relative w-full md:w-2/3 h-[250px] md:h-full overflow-hidden group">
                   {selectedItem.imageUrl ? (
                     <img src={selectedItem.imageUrl} alt="Main" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
@@ -363,65 +375,53 @@ export default function VolunteerSection() {
                   )}
                 </div>
 
-                {/* Bottom Overview Block */}
-                <div className="border-4 border-black bg-white p-6 md:p-8 min-h-[200px] flex-grow flex flex-col">
-                  <h4 className="font-black uppercase text-xl md:text-2xl text-black mb-6 border-b-4 border-black pb-1 inline-block self-start">
-                    Job Description
-                  </h4>
-                  <div className="font-jakarta text-sm md:text-base font-bold text-slate-800">
-                    {selectedItem.description ? (
-                      <ul className="list-disc list-outside ml-5 space-y-3">
-                        {selectedItem.description.split('\n').filter(Boolean).map((point, idx) => (
-                          <li key={idx} className="leading-snug">{point.replace(/^-\s*/, '')}</li>
-                        ))}
-                      </ul>
+                {/* Supporting Photos */}
+                <div className="flex flex-row md:flex-col gap-4 w-full md:w-1/3 h-[150px] md:h-full">
+                  {/* Photo 1 */}
+                  <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center w-1/2 md:w-full h-full md:h-[calc(50%-0.5rem)] overflow-hidden group">
+                    {selectedItem.supportingImages?.[0] ? (
+                      <img src={selectedItem.supportingImages[0]} alt="Supporting 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
-                      <p className="text-slate-500 italic">No description available.</p>
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-neo-green">
+                        <FaImage className="text-4xl text-black/20 mb-2" />
+                        <p className="text-black/40 font-black uppercase text-xs tracking-widest">Photo 1</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Photo 2 */}
+                  <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center w-1/2 md:w-full h-full md:h-[calc(50%-0.5rem)] overflow-hidden group">
+                    {selectedItem.supportingImages?.[1] ? (
+                      <img src={selectedItem.supportingImages[1]} alt="Supporting 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-white">
+                        <FaImage className="text-4xl text-black/20 mb-2" />
+                        <p className="text-black/40 font-black uppercase text-xs tracking-widest">Photo 2</p>
+                      </div>
                     )}
                   </div>
                 </div>
 
               </div>
 
-              {/* Right Column (w-1/3) */}
-              <div className="flex flex-col w-full md:w-1/3 gap-4">
-                
-                {/* Top Block: Supporting Photo 1 */}
-                <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center flex-1 min-h-[150px] overflow-hidden group">
-                  {selectedItem.supportingImages?.[0] ? (
-                    <img src={selectedItem.supportingImages[0]} alt="Supporting 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              {/* Bottom Row: Job Description (Full Width) */}
+              <div className="border-4 border-black bg-white p-6 md:p-8 w-full flex flex-col max-h-[400px] overflow-y-auto">
+                <div className="sticky top-0 bg-white z-10 pb-2 mb-4 border-b-4 border-black">
+                  <h4 className="font-black uppercase text-xl md:text-2xl text-black inline-block self-start">
+                    Job Description
+                  </h4>
+                </div>
+                <div className="font-jakarta text-sm md:text-base font-bold text-slate-800">
+                  {selectedItem.description ? (
+                    <ul className="list-disc list-outside ml-5 space-y-3">
+                      {selectedItem.description.split('\n').filter(Boolean).map((point, idx) => (
+                        <li key={idx} className="leading-snug">{point.replace(/^-\s*/, '')}</li>
+                      ))}
+                    </ul>
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-neo-green">
-                      <FaImage className="text-4xl text-black/20 mb-2" />
-                      <p className="text-black/40 font-black uppercase text-xs tracking-widest">Photo 1</p>
-                    </div>
+                    <p className="text-slate-500 italic">No description available.</p>
                   )}
                 </div>
-
-                {/* Middle Block: Supporting Photo 2 */}
-                <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center flex-1 min-h-[150px] overflow-hidden group">
-                  {selectedItem.supportingImages?.[1] ? (
-                    <img src={selectedItem.supportingImages[1]} alt="Supporting 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-white">
-                      <FaImage className="text-4xl text-black/20 mb-2" />
-                      <p className="text-black/40 font-black uppercase text-xs tracking-widest">Photo 2</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Bottom Block: Supporting Photo 3 */}
-                <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center flex-1 min-h-[150px] overflow-hidden group">
-                  {selectedItem.supportingImages?.[2] ? (
-                    <img src={selectedItem.supportingImages[2]} alt="Supporting 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-neo-pink">
-                      <FaImage className="text-4xl text-black/20 mb-2" />
-                      <p className="text-black/40 font-black uppercase text-xs tracking-widest">Photo 3</p>
-                    </div>
-                  )}
-                </div>
-
               </div>
 
             </div>
