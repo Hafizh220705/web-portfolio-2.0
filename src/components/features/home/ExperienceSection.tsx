@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBriefcase, FaGraduationCap, FaUsers, FaArrowRight, FaTimes, FaImage } from 'react-icons/fa';
 import type { ReactNode } from 'react';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
@@ -19,9 +19,9 @@ type Experience = {
 
 const EXPERIENCES: Experience[] = [
   {
-    title: 'Backend Developer Intern',
-    company: 'Elevated Indonesia',
-    date: 'Jul 2025',
+    title: 'Data Scientist',
+    company: 'Pusat Inovasi Pengajaran dan Pembelajaran',
+    date: 'Sep 2025 - Dec 2025',
     category: 'Internship',
     description: [
       'Fokus pada pengembangan sisi server dan manajemen database.',
@@ -34,10 +34,10 @@ const EXPERIENCES: Experience[] = [
     companyLogo: '', // Tambahkan URL/path logo perusahaan di sini
   },
   {
-    title: 'Information Technology Developer',
+    title: 'Backend Developer',
     company: 'UNPAD Luhung',
-    date: 'Professional Experience',
-    category: 'Full-time',
+    date: 'Aug 2025 - Dec 2025',
+    category: 'Internship',
     description: [
       'Mengembangkan solusi IT internal berbasis teknologi web.',
       'Mengelola infrastruktur digital untuk mendukung operasional organisasi.',
@@ -49,10 +49,10 @@ const EXPERIENCES: Experience[] = [
     companyLogo: '',
   },
   {
-    title: 'Laboratory Teaching Assistant',
-    company: 'Universitas Padjadjaran',
-    date: '2025 – 2026',
-    category: 'Academic',
+    title: 'Information Technology Developer',
+    company: 'UNPAD Luhung',
+    date: 'Jul 2025 – Dec 2025',
+    category: 'Internship',
     description: [
       'Menjadi asisten praktikum mata kuliah Object-Oriented Programming.',
       'Membantu mahasiswa dalam memahami konsep pemrograman terstruktur.',
@@ -64,16 +64,31 @@ const EXPERIENCES: Experience[] = [
     companyLogo: '',
   },
   {
-    title: 'Head of Department & Logistics',
-    company: 'Student Committee',
-    date: 'Organizational Experience',
-    category: 'Organization',
+    title: 'Laboratory Teaching Assistant',
+    company: 'Universitas Padjadjaran',
+    date: 'Feb 2025 - Dec 2025',
+    category: 'Part Time',
     description: [
       'Bertanggung jawab atas manajemen logistik kegiatan kemahasiswaan.',
       'Memimpin departemen dalam merencanakan program kerja tahunan.',
       'Berkoordinasi dengan pihak internal dan eksternal kampus.'
     ],
     color: 'bg-neo-pink',
+    icon: <FaUsers />,
+    imageUrl: '',
+    companyLogo: '',
+  },
+  {
+    title: 'Data Scientist',
+    company: 'id/x Partners',
+    date: 'Jan 2025 - Feb 2025',
+    category: 'Project Based',
+    description: [
+      'Bertanggung jawab atas manajemen logistik kegiatan kemahasiswaan.',
+      'Memimpin departemen dalam merencanakan program kerja tahunan.',
+      'Berkoordinasi dengan pihak internal dan eksternal kampus.'
+    ],
+    color: 'bg-neo-green',
     icon: <FaUsers />,
     imageUrl: '',
     companyLogo: '',
@@ -85,15 +100,24 @@ export default function ExperienceSection() {
   const [selectedItem, setSelectedItem] = useState<Experience | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [modalOpen]);
+
   const openModal = (item: Experience) => {
     setSelectedItem(item);
-    document.body.style.overflow = 'hidden';
     setTimeout(() => setModalOpen(true), 10); // Delay so mount animation plays
   };
 
   const closeModal = () => {
     setModalOpen(false);
-    document.body.style.overflow = 'unset';
     setTimeout(() => setSelectedItem(null), 300); // Wait for transition
   };
 
@@ -180,7 +204,7 @@ export default function ExperienceSection() {
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div
-            className={`absolute inset-0 bg-neo-bg/90 backdrop-blur-sm transition-opacity duration-300 ${modalOpen ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${modalOpen ? 'opacity-100' : 'opacity-0'}`}
             onClick={closeModal}
           ></div>
 

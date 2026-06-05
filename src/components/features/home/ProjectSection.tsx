@@ -126,9 +126,6 @@ export default function ProjectSection() {
           className={`mt-16 flex flex-col items-center gap-4 transition-all duration-700 ease-out
             ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <p className="font-black uppercase text-sm tracking-widest text-black/60">
-            — Masih banyak lagi —
-          </p>
           <Link
             href="/projects"
             className="group relative inline-flex items-center gap-3 border-4 border-black bg-neo-yellow px-10 py-4 text-lg font-black uppercase shadow-neo hover:bg-neo-pink hover:-translate-y-1 active:translate-y-0 transition-all duration-200"

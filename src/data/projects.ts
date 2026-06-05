@@ -47,9 +47,9 @@ const TECH: Record<string, TechItem> = {
 
 export const PROJECTS: Project[] = [
   {
-    title: 'SafePath',
+    title: 'The Intelligence Battle: Human Expert vs. Evolutionary Tuning & Neuro-Fuzzy',
     description:
-      'Platform pelaporan kriminalitas dan keamanan publik berbasis web untuk meningkatkan kesadaran keamanan lingkungan masyarakat.',
+      'A comparative study exploring whether machines can design better decision systems than human experts. Built and evaluated three approaches on a classification dataset: Manual Mamdani FIS with 27 hand-crafted fuzzy rules (43.73% accuracy), Genetic Algorithm-optimized FIS that improved accuracy by +24.17% (67.90%), and ANN-guided parameter tuning that achieved 84.06% accuracy — demonstrating that evolutionary and neural approaches consistently uncover decision boundaries that human intuition alone tends to miss.',
     image: '/images/projects/safepath.jpg',
     category: 'Web Dev',
     year: '2024',

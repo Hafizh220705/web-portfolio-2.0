@@ -105,6 +105,15 @@ const CERTIFICATES: Certificate[] = [
     imageUrl: 'images/certificates/certif10.png',
     link:     'https://drive.google.com/file/d/1OnjrjqEodyzm22u1m6Hb97yTlac0FO3w/view?usp=sharing'
   },
+  {
+    title:    'Hands-On AI: Image Processing with Python',
+    issuer:   'Linkedin Learning',
+    date:     '-',
+    category: 'Course',
+    color:    'bg-neo-yellow',
+    imageUrl: 'images/certificates/certif11.png',
+    link:     'https://drive.google.com/file/d/1Jd6dRkz0hIEWPxRWnZL5A1U6eKjacNjC/view?usp=sharing'
+  },
 ];
 
 const ITEMS_PER_PAGE = 2;
@@ -196,9 +205,7 @@ export default function CertificateSection() {
           {paddedItems.map((cert, index) => {
             if (!cert) {
               return (
-                <div key={`empty-${index}`} className="invisible pointer-events-none flex flex-col">
-                  <div className="h-48 md:h-64 mb-6"></div>
-                  <div className="p-6 h-[200px]"></div>
+                <div key={`empty-${index}`} className="invisible pointer-events-none flex flex-col h-[420px] md:h-[480px]">
                 </div>
               );
             }
@@ -206,7 +213,7 @@ export default function CertificateSection() {
             return (
               <div
                 key={`${currentPage}-${index}`}
-                className={`flex flex-col border-4 border-black bg-white shadow-neo hover:-translate-y-2 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 ease-out ${
+                className={`flex flex-col border-4 border-black bg-white shadow-neo hover:-translate-y-2 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 ease-out h-[420px] md:h-[480px] ${
                   inView && !isAnimating ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                 }`}
                 style={{ transitionDelay: isAnimating ? '0ms' : `${index * 100}ms` }}

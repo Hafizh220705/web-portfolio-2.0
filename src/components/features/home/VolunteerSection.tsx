@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaHandHoldingHeart, FaUsers, FaTools, FaLaptopCode, FaChevronLeft, FaChevronRight, FaTimes, FaImage } from 'react-icons/fa';
 import type { ReactNode } from 'react';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
@@ -11,7 +11,7 @@ type VolunteerItem = {
   period: string;
   description: string;
   imageUrl?: string; // Image for the bento popup
-  supportingImages?: string[]; // Supporting images for the popup
+  suppoertingImages?: string[]; // Supporting images for the popup
   orgLogo?: string; // Logo organisasi/volunteer untuk card
   transparentLogo?: boolean; // true jika logo transparan → pakai warna background
   category: string;
@@ -192,6 +192,17 @@ export default function VolunteerSection() {
   const [lockedHeight, setLockedHeight] = useState<number | undefined>(undefined);
 
   const totalPages = Math.ceil(VOLUNTEERS.length / ITEMS_PER_PAGE) || 1;
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [modalOpen]);
 
   const openModal = (item: VolunteerItem) => {
     setSelectedItem(item);
