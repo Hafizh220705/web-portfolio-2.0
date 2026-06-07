@@ -135,9 +135,14 @@ export default function ContactSection() {
       }}
     >
       {/* Neo-brutalist decorative blobs */}
-      <div className="pointer-events-none absolute -top-8 -left-8 h-40 w-40 border-4 border-black bg-neo-yellow opacity-60 rotate-12" />
-      <div className="pointer-events-none absolute top-1/2 -right-10 h-32 w-32 border-4 border-black bg-neo-pink opacity-50 -rotate-6" />
-      <div className="pointer-events-none absolute -bottom-6 left-1/3 h-24 w-24 border-4 border-black bg-neo-blue opacity-40 rotate-3" />
+      <div className="pointer-events-none absolute -top-8 -left-8 h-40 w-40 border-4 border-black bg-neo-yellow opacity-100 rotate-12" />
+      <div className="pointer-events-none absolute top-1/2 -right-10 h-32 w-32 border-4 border-black bg-neo-pink opacity-100 -rotate-6" />
+      <div className="pointer-events-none absolute -bottom-6 left-1/3 h-24 w-24 border-4 border-black bg-neo-blue opacity-100 rotate-3" />
+      <div className="pointer-events-none absolute top-20 right-1/4 h-20 w-20 border-4 border-black bg-neo-green opacity-100 rotate-45" />
+      <div className="pointer-events-none absolute bottom-20 left-10 h-28 w-28 border-4 border-black bg-white opacity-100 -rotate-12" />
+      <div className="pointer-events-none absolute top-1/3 left-1/4 h-16 w-16 border-4 border-black bg-neo-pink opacity-100 rotate-12" />
+      <div className="pointer-events-none absolute bottom-1/3 right-1/3 h-36 w-36 border-4 border-black bg-neo-yellow opacity-100 rotate-45 rounded-full" />
+      <div className="pointer-events-none absolute top-10 right-1/3 h-12 w-12 border-4 border-black bg-neo-blue opacity-100 -rotate-45" />
 
       {/* Toast */}
       {toast && <ToastAlert toast={toast} onClose={() => setToast(null)} />}

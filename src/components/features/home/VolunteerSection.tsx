@@ -11,7 +11,7 @@ type VolunteerItem = {
   period: string;
   description: string;
   imageUrl?: string; // Image for the bento popup
-  suppoertingImages?: string[]; // Supporting images for the popup
+  supportingImages?: string[]; // Supporting images for the popup
   orgLogo?: string; // Logo organisasi/volunteer untuk card
   transparentLogo?: boolean; // true jika logo transparan → pakai warna background
   category: string;
@@ -73,9 +73,12 @@ const VOLUNTEERS: VolunteerItem[] = [
     organization: 'Himatif FMIPA Unpad',
     period: 'Feb 2024 – Dec 2024',
     description:
-      '',
-    imageUrl: '',
+      `Designed and executed a structured onboarding framework for 90+ first and second-year students, facilitating their seamless integration into the organization's culture and operations.
+      Surveyed and mapped the talent profiles of 90+ members—categorizing them by technical expertise, prior organizational experience, and personal interests—to optimize internal human resource placement.
+      Spearheaded targeted communication campaigns for committee open recruitment, successfully encouraging 10+ new members to actively register and take on organizational roles.`,
+    imageUrl: '/images/organization/org4.png',
     orgLogo: '/images/organization/org1.png',
+    supportingImages: ['/images/organization/certif3.png', '/images/organization/org5.png'],
     transparentLogo: true,
     category: 'Organization',
     color: 'bg-neo-pink',
@@ -370,10 +373,10 @@ export default function VolunteerSection() {
             </p>
 
             <div className="flex flex-col gap-4 w-full h-full">
-              
+
               {/* Top Row: Photos */}
               <div className="flex flex-col md:flex-row gap-4 w-full h-auto md:h-[300px]">
-                
+
                 {/* Main Photo */}
                 <div className="border-4 border-black bg-neo-bg p-0 flex items-center justify-center relative w-full md:w-2/3 h-[250px] md:h-full overflow-hidden group">
                   {selectedItem.imageUrl ? (
