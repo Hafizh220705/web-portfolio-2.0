@@ -1,4 +1,3 @@
-import type { ComponentType } from 'react';
 import { FaCode, FaDatabase, FaPython } from 'react-icons/fa';
 import {
   SiArduino,
@@ -8,115 +7,91 @@ import {
   SiSupabase,
   SiTensorflow,
 } from '@icons-pack/react-simple-icons';
-
-type TechIcon = ComponentType<{ size?: number | string; className?: string }>;
-
-export type TechItem = {
-  name: string;
-  Icon: TechIcon;
-  className?: string;
-};
-
-export type Project = {
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  year: string;
-  tech: TechItem[];
-  github: string;
-  website?: string;
-  featured?: boolean;
-  showOnHome?: boolean;
-};
+import type { TechItem, Project } from '@/types';
 
 const TECH: Record<string, TechItem> = {
-  nextjs: { name: 'Next.js', Icon: SiNextdotjs, className: 'text-black' },
-  supabase: { name: 'Supabase', Icon: SiSupabase, className: 'text-[#3ECF8E]' },
-  postgresql: { name: 'PostgreSQL', Icon: FaDatabase, className: 'text-blue-600' },
-  python: { name: 'Python', Icon: FaPython, className: 'text-yellow-500' },
-  tensorflow: { name: 'TensorFlow', Icon: SiTensorflow, className: 'text-orange-500' },
-  arduino: { name: 'Arduino', Icon: SiArduino, className: 'text-cyan-500' },
-  pandas: { name: 'Pandas', Icon: SiPandas, className: 'text-purple-600' },
-  scikitlearn: { name: 'Scikit-learn', Icon: SiScikitlearn, className: 'text-orange-400' },
-  mediapipe: { name: 'MediaPipe', Icon: FaCode, className: 'text-slate-700' },
-  plotly: { name: 'Plotly', Icon: FaCode, className: 'text-slate-700' },
-  opencv: { name: 'OpenCV', Icon: FaCode, className: 'text-slate-700' },
-  flask: { name: 'Flask', Icon: FaCode, className: 'text-slate-700' },
+  nextjs:      { name: 'Next.js',      Icon: SiNextdotjs,   className: 'text-black'         },
+  supabase:    { name: 'Supabase',     Icon: SiSupabase,    className: 'text-[#3ECF8E]'     },
+  postgresql:  { name: 'PostgreSQL',   Icon: FaDatabase,    className: 'text-blue-600'       },
+  python:      { name: 'Python',       Icon: FaPython,      className: 'text-yellow-500'     },
+  tensorflow:  { name: 'TensorFlow',   Icon: SiTensorflow,  className: 'text-orange-500'     },
+  arduino:     { name: 'Arduino',      Icon: SiArduino,     className: 'text-cyan-500'       },
+  pandas:      { name: 'Pandas',       Icon: SiPandas,      className: 'text-purple-600'     },
+  scikitlearn: { name: 'Scikit-learn', Icon: SiScikitlearn, className: 'text-orange-400'     },
+  mediapipe:   { name: 'MediaPipe',    Icon: FaCode,        className: 'text-slate-700'      },
+  plotly:      { name: 'Plotly',       Icon: FaCode,        className: 'text-slate-700'      },
+  opencv:      { name: 'OpenCV',       Icon: FaCode,        className: 'text-slate-700'      },
+  flask:       { name: 'Flask',        Icon: FaCode,        className: 'text-slate-700'      },
 };
+
+// showOnHome: true  → tampil di homepage (ProjectSection)
+// featured: true    → tampil badge "Featured" di halaman /projects
 
 export const PROJECTS: Project[] = [
   {
-    title: 'The Intelligence Battle: Human Expert vs. Evolutionary Tuning & Neuro-Fuzzy',
-    description:
-      'A comparative study exploring whether machines can design better decision systems than human experts. Built and evaluated three approaches on a classification dataset: Manual Mamdani FIS with 27 hand-crafted fuzzy rules (43.73% accuracy), Genetic Algorithm-optimized FIS that improved accuracy by +24.17% (67.90%), and ANN-guided parameter tuning that achieved 84.06% accuracy — demonstrating that evolutionary and neural approaches consistently uncover decision boundaries that human intuition alone tends to miss.',
-    image: '/images/projects/safepath.jpg',
-    category: 'Web Dev',
-    year: '2024',
-    tech: [TECH.nextjs, TECH.supabase, TECH.postgresql],
-    github: 'https://github.com/Hafizh220705/safepath',
-    website: 'https://safepath-demo.com',
-    featured: true,
-    showOnHome: true,
+    title:       'The Intelligence Battle: Human Expert vs. Evolutionary Tuning & Neuro-Fuzzy',
+    description: 'A comparative study exploring whether machines can design better decision systems than human experts. Evaluated three approaches: Manual Mamdani FIS (43.73%), Genetic Algorithm-optimized FIS (+24.17% → 67.90%), and ANN-guided Neuro-Fuzzy (84.06%).',
+    image:       '/images/projects/safepath.jpg',
+    category:    'Machine Learning',
+    year:        '2024',
+    tech:        [TECH.python, TECH.scikitlearn],
+    github:      'https://github.com/Hafizh220705/safepath',
+    featured:    true,
+    showOnHome:  true,
   },
   {
-    title: 'EEG Emotion Classification',
-    description:
-      'Riset klasifikasi emosi berbasis sinyal EEG menggunakan perangkat Muse S dan model deep learning untuk mendeteksi 4 kelas emosi.',
-    image: '/images/projects/eeg.jpg',
-    category: 'Machine Learning',
-    year: '2024',
-    tech: [TECH.python, TECH.tensorflow],
-    github: 'https://github.com/Hafizh220705/eeg-classification',
-    featured: true,
-    showOnHome: true,
+    title:       'EEG Emotion Classification',
+    description: 'Emotion classification research based on EEG signals using Muse S device and deep learning models to detect 4 emotion classes.',
+    image:       '/images/projects/eeg.jpg',
+    category:    'Machine Learning',
+    year:        '2024',
+    tech:        [TECH.python, TECH.tensorflow],
+    github:      'https://github.com/Hafizh220705/eeg-classification',
+    featured:    true,
+    showOnHome:  true,
   },
   {
-    title: 'Robotic Angklung',
-    description:
-      'Sistem robotika angklung otomatis yang dikontrol menggunakan Computer Vision (MediaPipe) dan Arduino untuk kontrol servo.',
-    image: '/images/projects/angklung.jpg',
-    category: 'Robotics',
-    year: '2023',
-    tech: [TECH.python, TECH.arduino, TECH.mediapipe],
-    github: 'https://github.com/Hafizh220705/robotic-angklung',
-    showOnHome: true,
+    title:       'Robotic Angklung',
+    description: 'Automated angklung robotic system controlled using Computer Vision (MediaPipe) and Arduino for servo control.',
+    image:       '/images/projects/angklung.jpg',
+    category:    'Robotics',
+    year:        '2023',
+    tech:        [TECH.python, TECH.arduino, TECH.mediapipe],
+    github:      'https://github.com/Hafizh220705/robotic-angklung',
+    showOnHome:  true,
   },
   {
-    title: 'Sales Dashboard Analysis',
-    description:
-      'Analisis data penjualan dengan visualisasi interaktif menggunakan Pandas dan Plotly untuk mengidentifikasi tren dan pola.',
-    image: '/images/projects/sales.jpg',
-    category: 'Data Analysis',
-    year: '2024',
-    tech: [TECH.python, TECH.pandas, TECH.plotly],
-    github: 'https://github.com/Hafizh220705/sales-dashboard',
+    title:       'Sales Dashboard Analysis',
+    description: 'Sales data analysis with interactive visualizations using Pandas and Plotly to identify trends and patterns.',
+    image:       '/images/projects/sales.jpg',
+    category:    'Data Analysis',
+    year:        '2024',
+    tech:        [TECH.python, TECH.pandas, TECH.plotly],
+    github:      'https://github.com/Hafizh220705/sales-dashboard',
   },
   {
-    title: 'Sentiment Analysis NLP',
-    description:
-      'Model NLP untuk analisis sentimen ulasan produk e-commerce menggunakan BERT fine-tuned pada dataset Bahasa Indonesia.',
-    image: '/images/projects/nlp.jpg',
-    category: 'Machine Learning',
-    year: '2023',
-    tech: [TECH.python, TECH.tensorflow, TECH.scikitlearn],
-    github: 'https://github.com/Hafizh220705/sentiment-nlp',
+    title:       'Sentiment Analysis NLP',
+    description: 'NLP model for sentiment analysis of e-commerce product reviews using fine-tuned BERT on an Indonesian language dataset.',
+    image:       '/images/projects/nlp.jpg',
+    category:    'Machine Learning',
+    year:        '2023',
+    tech:        [TECH.python, TECH.tensorflow, TECH.scikitlearn],
+    github:      'https://github.com/Hafizh220705/sentiment-nlp',
   },
   {
-    title: 'Smart Attendance System',
-    description:
-      'Sistem absensi otomatis berbasis face recognition menggunakan OpenCV dan Flask sebagai backend REST API.',
-    image: '/images/projects/attendance.jpg',
-    category: 'Machine Learning',
-    year: '2023',
-    tech: [TECH.python, TECH.opencv, TECH.flask],
-    github: 'https://github.com/Hafizh220705/smart-attendance',
+    title:       'Smart Attendance System',
+    description: 'Automatic attendance system based on face recognition using OpenCV and Flask as a REST API backend.',
+    image:       '/images/projects/attendance.jpg',
+    category:    'Machine Learning',
+    year:        '2023',
+    tech:        [TECH.python, TECH.opencv, TECH.flask],
+    github:      'https://github.com/Hafizh220705/smart-attendance',
   },
 ];
 
-export const HOME_PROJECTS = PROJECTS.filter((project) => project.showOnHome);
+export const HOME_PROJECTS = PROJECTS.filter((p) => p.showOnHome);
 
 export const PROJECT_CATEGORIES = [
   'All',
-  ...Array.from(new Set(PROJECTS.map((project) => project.category))),
+  ...Array.from(new Set(PROJECTS.map((p) => p.category))),
 ];

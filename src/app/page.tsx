@@ -1,12 +1,11 @@
-import AboutSection from "@/components/features/home/AboutSection";
-import CertificateSection from "@/components/features/home/CertificateSection";
-import ContactSection from "@/components/features/home/ContactSection";
-import EducationSection from "@/components/features/home/EducationSection";
-import ExperienceSection from "@/components/features/home/ExperienceSection";
-
-import ProjectSection from "@/components/features/home/ProjectSection";
-import SkillsSection from "@/components/features/home/SkillsSection";
-import VolunteerSection from "@/components/features/home/VolunteerSection";
+import AboutSection from "@/components/features/AboutSection";
+import CertificateSection from "@/components/features/CertificateSection";
+import ContactSection from "@/components/features/ContactSection";
+import EducationSection from "@/components/features/EducationSection";
+import ExperienceSection from "@/components/features/ExperienceSection";
+import ProjectSection from "@/components/features/ProjectSection";
+import SkillsSection from "@/components/features/SkillsSection";
+import VolunteerSection from "@/components/features/VolunteerSection";
 
 export default function Home() {
   return (
@@ -19,8 +18,6 @@ export default function Home() {
       <CertificateSection />
       <VolunteerSection />
       <ContactSection />
-      
     </main>
-    
   );
 }

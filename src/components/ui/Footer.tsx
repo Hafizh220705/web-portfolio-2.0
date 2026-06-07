@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: <FaLinkedinIn />, url: 'https://linkedin.com/in/hafizhfadhlm',  color: 'hover:bg-neo-blue',              label: 'LinkedIn'  },
+    { icon: <FaLinkedinIn />, url: 'https://linkedin.com/in/hafizhfadhlm',   color: 'hover:bg-neo-blue',              label: 'LinkedIn'  },
     { icon: <FaGithub />,     url: 'https://github.com/Hafizh220705',        color: 'hover:bg-black hover:text-white', label: 'GitHub'    },
     { icon: <FaInstagram />,  url: 'https://instagram.com/hafizhfadhlm',     color: 'hover:bg-neo-pink',              label: 'Instagram' },
     { icon: <FaWhatsapp />,   url: 'https://wa.me/6282290764213',            color: 'hover:bg-neo-green',             label: 'WhatsApp'  },

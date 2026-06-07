@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Sora, Plus_Jakarta_Sans } from "next/font/google"; 
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Header from "@/components/ui/Header";
+import Footer from "@/components/ui/Footer";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" });

@@ -71,7 +71,7 @@ export default function Header() {
             href="/"
             className="inline-block border-4 border-black bg-neo-yellow px-3 py-1.5 text-lg md:text-xl font-black uppercase tracking-tighter shadow-neo-sm hover:-translate-y-1 hover:shadow-neo transition-all"
           >
-            Hafizh Fadhl
+            Hafizh Fadhl M
           </Link>
         </motion.div>
 
