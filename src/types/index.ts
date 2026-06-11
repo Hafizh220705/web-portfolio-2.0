@@ -43,9 +43,10 @@ export type Experience = {
   category:     ExperienceCategory;
   description:  string[];
   color:        NeoColor;
-  iconName:     'briefcase' | 'graduation' | 'users';
   imageUrl?:    string;
+  supportingImages?: string[];
   companyLogo?: string;
+  logoScale?:   string;
 };
 
 export type Education = {

@@ -142,6 +142,7 @@ function VolunteerModal({
                   src={item.imageUrl}
                   alt={`${item.role} main photo`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 66vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
@@ -164,6 +165,7 @@ function VolunteerModal({
                       src={item.supportingImages[i]}
                       alt={`Supporting photo ${i + 1}`}
                       fill
+                      sizes="(max-width: 768px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (

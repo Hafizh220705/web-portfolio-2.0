@@ -7,7 +7,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     'Apr 2024',
     category: 'Course',
     color:    'bg-neo-blue',
-    imageUrl: '/images/certificates/certif1.png',
+    imageUrl: '/images/certificates/certificate-belajar-dasar-ai.png',
     link:     'https://drive.google.com/file/d/13mmZ-lXJAKiXPCIK5VLMXVc2eX8cUVwC/view?usp=sharing',
   },
   {
@@ -16,7 +16,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     'Apr 2024',
     category: 'Course',
     color:    'bg-neo-green',
-    imageUrl: '/images/certificates/certif2.png',
+    imageUrl: '/images/certificates/certificate-belajar-machine-learning-untuk-pemula.png',
     link:     'https://drive.google.com/file/d/1lhg_nLVdgePKODCFB-pK09BSEruxAwlQ/view?usp=sharing',
   },
   {
@@ -25,7 +25,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-pink',
-    imageUrl: '/images/certificates/certif3.png',
+    imageUrl: '/images/certificates/certificate-microsoft-power-bi.png',
     link:     'https://drive.google.com/file/d/1V7A7u3_NspjRsSebGdPYjz83AbWfF8IH/view?usp=sharing',
   },
   {
@@ -34,7 +34,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-yellow',
-    imageUrl: '/images/certificates/certif4.png',
+    imageUrl: '/images/certificates/certificate-deep-learning-applications.png',
     link:     'https://drive.google.com/file/d/1YI8hpa5BCBR2nYC7U3QyscMt1K6vN1PZ/view?usp=sharing',
   },
   {
@@ -43,7 +43,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Technical',
     color:    'bg-neo-pink',
-    imageUrl: '/images/certificates/certif5.png',
+    imageUrl: '/images/certificates/certificate-sql-advanced.png',
     link:     'https://drive.google.com/file/d/16W7OfhlLquVuCAiWmmXUkuRtGyQWOVz8/view?usp=sharing',
   },
   {
@@ -52,7 +52,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-blue',
-    imageUrl: '/images/certificates/certif6.png',
+    imageUrl: '/images/certificates/certificate-python-for-data-science.png',
     link:     'https://drive.google.com/file/d/1AhQ3OsL9ItvWHueHO1k5pfjeIbn7x1TZ/view?usp=sharing',
   },
   {
@@ -61,7 +61,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-green',
-    imageUrl: '/images/certificates/certif7.png',
+    imageUrl: '/images/certificates/certificate-career-essentials.png',
     link:     'https://drive.google.com/file/d/14IpNb2efu2qRklfaHf4pjqFLD665f0-L/view?usp=sharing',
   },
   {
@@ -70,7 +70,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     'Mar 2026',
     category: 'Technical',
     color:    'bg-neo-yellow',
-    imageUrl: '/images/certificates/certif8.png',
+    imageUrl: '/images/certificates/certificate-alibaba-cloud.png',
     link:     'https://drive.google.com/file/d/14IpNb2efu2qRklfaHf4pjqFLD665f0-L/view?usp=sharing',
   },
   {
@@ -79,7 +79,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-blue',
-    imageUrl: '/images/certificates/certif9.png',
+    imageUrl: '/images/certificates/certificate-google-looker-studio.png',
     link:     'https://drive.google.com/file/d/1fowGRWsUZxFGjDY8urRnZG61FkbqjZZX/view?usp=sharing',
   },
   {
@@ -88,7 +88,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-pink',
-    imageUrl: '/images/certificates/certif10.png',
+    imageUrl: '/images/certificates/certificate-sql-for-data-analysis.png',
     link:     'https://drive.google.com/file/d/1OnjrjqEodyzm22u1m6Hb97yTlac0FO3w/view?usp=sharing',
   },
   {
@@ -97,7 +97,7 @@ export const CERTIFICATES: Certificate[] = [
     date:     '-',
     category: 'Course',
     color:    'bg-neo-yellow',
-    imageUrl: '/images/certificates/certif11.png',
+    imageUrl: '/images/certificates/certificate-image-processing.png',
     link:     'https://drive.google.com/file/d/1Jd6dRkz0hIEWPxRWnZL5A1U6eKjacNjC/view?usp=sharing',
   },
 ];

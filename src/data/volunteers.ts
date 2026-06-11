@@ -135,8 +135,13 @@ export const VOLUNTEERS: Volunteer[] = [
     role:         'Staff of Event',
     organization: 'Informatics Sport Art And Game Tournament',
     period:       'Apr 2024 – Jun 2024',
-    description:  '',
-    orgLogo:      '/images/volunteer/vol5.png',
+    description:  
+      `Directed the end-to-end execution of the Futsal competition as the primary Person in Charge (PIC), managing match fixtures, on-site logistics, and real-time mobility for 120+ participants across 4 active student cohorts.
+       Coordinated comprehensive operational schedules across 9 diverse competition branches (3 sports, 4 e-sports, and 2 arts), ensuring 100% adherence to the established project management timeline without critical delays.
+       Mitigated real-time operational bottlenecks and technical issues during live event sessions through rapid cross-functional collaboration, guaranteeing uninterrupted tournament flow and optimal participant experience.`,
+    imageUrl:         '/images/volunteer/photo/staff-of-event-1.png',
+    orgLogo:          '/images/volunteer/logo/instagram.png',
+    supportingImages: ['/images/certificates/certificate-staff-of-event.png', '/images/volunteer/photo/staff-of-event-2.png'],
     category:     'Volunteer',
     color:        'bg-neo-pink',
   },
@@ -144,8 +149,13 @@ export const VOLUNTEERS: Volunteer[] = [
     role:         'Staff of Facilitator',
     organization: 'Character Building Season',
     period:       'Jun 2024 – Oct 2024',
-    description:  '',
-    orgLogo:      '/images/volunteer/vol1.png',
+    description:  
+      `Mentored and guided a dedicated cohort of 8 first-year students through a 5-month intensive department orientation program, achieving a 100% graduation rate for the group.
+       Moderated daily Focus Group Discussions (FGDs) to synthesize 2-3 core developmental modules per session, ensuring deep material comprehension and high active engagement from all group members.
+       Conducted bi-weekly evaluation and mentoring sessions to monitor individual behavioral progress, providing personalized guidance to facilitate their seamless transition into the university's academic environment.`,
+    imageUrl:         '/images/volunteer/photo/staff-of-facilitator-1.png',
+    orgLogo:          '/images/volunteer/logo/cbs.png',
+    supportingImages: ['/images/certificates/certificate-staff-of-facilitator.png', '/images/volunteer/photo/staff-of-facilitator-2.png'],
     category:     'Volunteer',
     color:        'bg-neo-blue',
   },
@@ -153,9 +163,14 @@ export const VOLUNTEERS: Volunteer[] = [
     role:         'Head of Logistic',
     organization: 'Informatics Fun Day',
     period:       'Sep 2024 – Nov 2024',
-    description:  '',
-    orgLogo:      '/images/organization/org1.png',
-    transparentLogo: true,
+    description:  
+      `Directed a dedicated team of 12 logistics staff to manage the end-to-end procurement, storage, and distribution of event supplies, ensuring 100% fulfillment of operational needs.
+       Negotiated and collaborated with 3 external vendors for critical equipment and transportation, while strategically designing a comprehensive venue layout to accommodate massive attendees spanning 13 cohorts (2012–2024).
+       Orchestrated site safety protocols by coordinating with external security personnel, effectively mitigating potential threats and maintaining a 100% secure and conducive environment throughout the event.`,
+    imageUrl:         '/images/volunteer/photo/head-of-logistic-1.png',
+    orgLogo:          '/images/volunteer/logo/iffd.png',
+    supportingImages: ['/images/certificates/certificate-head-of-logistic.png', '/images/volunteer/photo/staff-of-logistic-2.png'],
+    transparentLogo:  true,
     category:     'Volunteer',
     color:        'bg-neo-pink',
   },

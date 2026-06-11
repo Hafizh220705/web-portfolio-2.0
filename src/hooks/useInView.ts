@@ -2,15 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-type UseInViewOnceOptions = {
+type UseInViewOptions = {
   threshold?: number;
   rootMargin?: string;
 };
 
-export function useInViewOnce({
+export function useInView({
   threshold = 0.1,
   rootMargin,
-}: UseInViewOnceOptions = {}) {
+}: UseInViewOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 

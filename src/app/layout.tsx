@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable} ${jakarta.variable} font-sora`}>
+      <body className={`${sora.variable} ${jakarta.variable} font-sora`} suppressHydrationWarning>
         <div className="page-content">
           <Header />
           {/* Konten halaman akan dirender di sini */}

@@ -114,10 +114,11 @@ function ProfilePhoto() {
           transition-all duration-300 group-hover:-translate-y-2 group-hover:rotate-0"
         >
           <Image
-            src="/images/profile/hafizh.jpg"
+            src="/images/profile/hafizh-fadhl-muhammad.jpg"
             alt="Hafizh Fadhl Muhammad"
             fill
             priority
+            sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 400px"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </div>

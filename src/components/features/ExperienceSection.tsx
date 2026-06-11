@@ -4,23 +4,14 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
   FaBriefcase,
-  FaGraduationCap,
-  FaUsers,
   FaArrowRight,
   FaTimes,
   FaImage,
 } from 'react-icons/fa';
-import type { ReactNode } from 'react';
 
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 import { EXPERIENCES } from '@/data/experiences';
 import type { Experience } from '@/types';
-
-const ICON_MAP: Record<Experience['iconName'], ReactNode> = {
-  briefcase:  <FaBriefcase />,
-  graduation: <FaGraduationCap />,
-  users:      <FaUsers />,
-};
 
 function ExperienceCard({
   exp,
@@ -51,12 +42,12 @@ function ExperienceCard({
             <Image
               src={exp.companyLogo}
               alt={`${exp.company} logo`}
-              width={48}
-              height={48}
-              className="w-full h-full object-cover p-1"
+              fill
+              sizes="(max-width: 768px) 48px, 48px"
+              className={`w-full h-full object-cover rounded-full ${exp.logoScale || ''}`}
             />
           ) : (
-            <span className="text-xl">{ICON_MAP[exp.iconName]}</span>
+            <span className="text-xl"><FaBriefcase /></span>
           )}
         </div>
 
@@ -137,160 +128,96 @@ function ExperienceModal({
           <FaTimes className="text-xl" />
         </button>
 
-        <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-6
-          border-b-4 border-black pb-4 pr-12"
-        >
-          {exp.category}{' '}
-          <span className={exp.color.replace('bg-', 'text-')}>Detail</span>
+        <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-6 border-b-4 border-black pb-4 pr-12">
+          {exp.title}
         </h3>
 
-        {/* 9-block bento grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[130px] md:auto-rows-[160px]">
-
-          {/* 1. Role ticket */}
-          <div className="col-span-1 row-span-1 border-4 border-black bg-white flex flex-col
-            items-center justify-center p-2 text-center relative overflow-hidden"
-          >
-            <p className="text-[10px] font-black uppercase text-neo-pink tracking-widest mb-1">Role</p>
-            <p className="font-black text-xs md:text-sm uppercase text-black">{exp.category}</p>
-            <div className="absolute bottom-3 flex gap-1 px-2 opacity-40">
-              {[1, 2, 1, 3, 1].map((w, i) => (
-                <div key={i} className={`w-${w} h-3 bg-black`} />
-              ))}
-            </div>
-          </div>
-
-          {/* 2. Company logo */}
-          <div className={`col-span-1 row-span-1 border-4 border-black ${exp.color}
-            flex flex-col items-center justify-center p-2 relative overflow-hidden group`}
-          >
+        <div className="flex items-center gap-4 mb-6">
+          <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0 flex items-center justify-center border-[3px] border-black bg-white shadow-neo-sm overflow-hidden rounded-full">
             {exp.companyLogo ? (
               <Image
                 src={exp.companyLogo}
                 alt={`${exp.company} logo`}
-                width={80}
-                height={80}
-                className="w-16 h-16 md:w-20 md:h-20 object-contain bg-white rounded-full p-2
-                  border-4 border-black group-hover:scale-110 transition-transform shadow-neo-sm"
-              />
-            ) : (
-              <>
-                <span className="text-4xl text-black mb-2">{ICON_MAP[exp.iconName]}</span>
-                <p className="text-black font-black uppercase text-[10px] tracking-widest text-center">
-                  Verified
-                </p>
-              </>
-            )}
-          </div>
-
-          {/* 3. Photo thumbnail */}
-          <div className="col-span-1 row-span-1 border-4 border-black bg-neo-bg overflow-hidden relative">
-            {exp.imageUrl ? (
-              <Image
-                src={exp.imageUrl}
-                alt={`${exp.title} thumbnail`}
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                sizes="(max-width: 768px) 64px, 80px"
+                className={`w-full h-full object-cover rounded-full ${exp.logoScale || ''}`}
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-slate-300">
-                <FaImage className="text-3xl" />
-              </div>
+              <FaBriefcase className="text-2xl text-black/50" />
             )}
           </div>
-
-          {/* 4. Tall photo (spans 2 rows) */}
-          <div className="col-span-1 row-span-2 border-4 border-black bg-neo-bg overflow-hidden relative group">
-            {exp.imageUrl ? (
-              <Image
-                src={exp.imageUrl}
-                alt={`${exp.title} tall`}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-                style={{ objectPosition: 'right' }}
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-neo-blue">
-                <FaImage className="text-5xl text-black/20" />
-              </div>
-            )}
-          </div>
-
-          {/* 5. Date + color swatches */}
-          <div className="col-span-1 row-span-1 border-4 border-black bg-black p-3 md:p-4 flex flex-col justify-between">
-            <p className="text-white font-sora text-[10px] font-bold">{exp.date}</p>
-            <div className="grid grid-cols-2 gap-2 mt-2">
-              {['bg-neo-pink', 'bg-white', 'bg-neo-green', 'bg-neo-blue'].map((color) => (
-                <div key={color} className={`w-full h-6 md:h-8 ${color} rounded-sm hover:scale-95 transition-transform`} />
-              ))}
+          <div>
+            <p className="font-black text-lg md:text-2xl uppercase text-black tracking-tight leading-tight mb-1">
+              {exp.company}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={`inline-block border-2 border-black px-2 py-0.5 text-[10px] md:text-xs font-black uppercase text-black ${exp.color}`}>
+                {exp.category}
+              </span>
+              <span className="font-jakarta text-xs md:text-sm font-bold text-slate-500">
+                • {exp.date}
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* 6. Responsibilities (spans 2 cols) */}
-          <div className="col-span-2 row-span-1 border-4 border-black bg-white p-4 flex flex-col
-            justify-center items-start text-left group hover:bg-neo-yellow transition-colors
-            relative overflow-hidden overflow-y-auto"
-          >
-            <h5 className="font-black uppercase text-xs md:text-sm text-black mb-2 z-10
-              border-b-2 border-black pb-1 self-center"
-            >
-              Responsibilities
-            </h5>
-            <ul className="font-jakarta text-[10px] md:text-xs font-bold text-slate-700
-              leading-snug z-10 list-disc list-outside pl-4 space-y-1"
-            >
-              {exp.description.map((pt, i) => <li key={i}>{pt}</li>)}
-            </ul>
-          </div>
-
-          {/* 7. Wide billboard (spans 2 cols) */}
-          <div className="col-span-2 row-span-1 border-4 border-black bg-neo-bg overflow-hidden
-            relative group flex flex-col justify-end p-4"
-          >
+        <div className="mt-2 mb-6 flex flex-col md:flex-row gap-4 w-full h-auto md:h-[300px]">
+          {/* Main photo */}
+          <div className={`relative border-4 border-black bg-neo-bg w-full ${exp.supportingImages?.length ? 'md:w-2/3' : ''} h-[250px] md:h-full overflow-hidden group shadow-neo-sm`}>
             {exp.imageUrl ? (
-              <>
-                <Image
-                  src={exp.imageUrl}
-                  alt={`${exp.title} wide`}
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ objectPosition: 'bottom' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              </>
+              <Image
+                src={exp.imageUrl}
+                alt={`${exp.title} main photo`}
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             ) : (
-              <div className="absolute inset-0 bg-neo-pink" />
+              <div className="w-full h-full flex flex-col items-center justify-center bg-neo-blue">
+                <FaImage className="text-6xl text-black/20 mb-2" />
+                <p className="text-black/40 font-black uppercase text-sm tracking-widest">Main Photo</p>
+              </div>
             )}
-            <p className="relative z-10 text-white font-black uppercase text-sm md:text-lg
-              leading-tight mt-auto drop-shadow-md"
-            >
-              Building The Future,<br />One Step At A Time
-            </p>
           </div>
 
-          {/* 8. Career driven badge */}
-          <div className="col-span-1 row-span-1 border-4 border-black bg-neo-green p-2 flex
-            flex-col justify-center items-center text-center hover:bg-black group transition-colors"
-          >
-            <p className="font-black text-white text-[10px] md:text-xs uppercase leading-tight group-hover:text-neo-green">
-              Career<br />Driven
-            </p>
+          {/* Supporting photos */}
+          <div className="flex flex-row md:flex-col gap-4 w-full md:w-1/3 h-[150px] md:h-full">
+            {[0, 1].map((i) => (
+              <div
+                key={i}
+                className="relative border-4 border-black bg-neo-bg w-1/2 md:w-full h-full md:h-[calc(50%-0.5rem)] overflow-hidden group shadow-neo-sm"
+              >
+                {exp.supportingImages?.[i] ? (
+                  <Image
+                    src={exp.supportingImages[i]}
+                    alt={`Supporting photo ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className={`w-full h-full flex flex-col items-center justify-center ${i === 0 ? 'bg-neo-green' : 'bg-white'}`}>
+                    <FaImage className="text-4xl text-black/20 mb-2" />
+                    <p className="text-black/40 font-black uppercase text-xs tracking-widest">
+                      Photo {i + 1}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* 9. Decorative EXP block */}
-          <div className="col-span-1 row-span-1 border-4 border-black bg-white flex items-center
-            justify-center relative overflow-hidden group"
-          >
-            <div className="absolute inset-0 border-[6px] md:border-[8px] border-neo-blue m-2
-              group-hover:rotate-12 transition-transform duration-300"
-            />
-            <p className="font-black text-black uppercase transform -rotate-90 text-sm md:text-base
-              tracking-widest z-10"
-            >
-              EXP
-            </p>
-          </div>
-
+        {/* Responsibilities */}
+        <div className="border-4 border-black bg-white p-6 md:p-8 shadow-neo-sm">
+          <h4 className="font-black uppercase text-xl md:text-2xl text-black mb-4 border-b-4 border-black pb-2 inline-block">
+            Responsibilities
+          </h4>
+          <ul className="font-jakarta text-sm md:text-base font-bold text-slate-700 list-disc list-outside ml-5 space-y-3">
+            {exp.description.map((pt, i) => (
+              <li key={i} className="leading-relaxed">{pt}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -323,6 +250,62 @@ export default function ExperienceSection() {
       id="experience"
       className="relative w-full py-20 bg-neo-bg bg-grid-pattern border-b-4 border-black font-sora"
     >
+      {/* Background Decorations (Neo-Brutalism) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Pink Sparkle */}
+        <svg
+          className="absolute top-20 left-4 lg:left-16 w-16 h-16 text-neo-pink animate-[spin_10s_linear_infinite] hidden md:block drop-shadow-[6px_6px_0_rgba(0,0,0,1)] pointer-events-auto"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          stroke="black"
+          strokeWidth="1.5"
+        >
+          <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+        </svg>
+
+        {/* Yellow Square */}
+        <div className="absolute top-64 right-8 lg:right-20 w-16 h-16 lg:w-20 lg:h-20 bg-neo-yellow border-4 border-black shadow-neo rotate-12 hidden md:block hover:rotate-45 transition-transform duration-500 pointer-events-auto" />
+
+        {/* Green Cross */}
+        <svg
+          className="absolute top-[45%] left-6 lg:left-12 w-16 h-16 lg:w-20 lg:h-20 text-neo-green -rotate-12 hidden md:block drop-shadow-[6px_6px_0_rgba(0,0,0,1)] pointer-events-auto hover:rotate-12 transition-transform duration-500"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+          stroke="black"
+          strokeWidth="6"
+        >
+          <path d="M35 5 L65 5 L65 35 L95 35 L95 65 L65 65 L65 95 L35 95 L35 65 L5 65 L5 35 L35 35 Z" strokeLinejoin="miter" />
+        </svg>
+
+        {/* Blue Circle */}
+        <div className="absolute bottom-32 right-10 lg:right-28 w-20 h-20 lg:w-24 lg:h-24 bg-neo-blue border-4 border-black rounded-full shadow-neo hidden md:block pointer-events-auto hover:-translate-y-2 transition-transform duration-300" />
+        
+        {/* Abstract shapes (Dots/Squares) */}
+        <div className="absolute top-[80%] left-[15%] w-5 h-5 bg-black rotate-45 hidden lg:block" />
+        <div className="absolute top-[20%] right-[30%] w-4 h-4 bg-black rounded-full hidden lg:block" />
+        <div className="absolute bottom-[10%] right-[40%] w-4 h-4 border-4 border-black rounded-full hidden md:block" />
+
+        {/* Pink Triangle */}
+        <svg
+          className="absolute top-[30%] right-[10%] lg:right-[15%] w-12 h-12 lg:w-16 lg:h-16 text-neo-pink hidden md:block drop-shadow-[4px_4px_0_rgba(0,0,0,1)] pointer-events-auto hover:rotate-[120deg] transition-transform duration-700"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+          stroke="black"
+          strokeWidth="6"
+        >
+          <polygon points="50,10 90,90 10,90" strokeLinejoin="round" />
+        </svg>
+
+        {/* Yellow Pill */}
+        <div className="absolute top-[60%] right-[2%] lg:right-[8%] w-10 h-24 lg:w-12 lg:h-32 bg-neo-yellow border-4 border-black rounded-full shadow-neo rotate-45 hidden lg:block pointer-events-auto hover:-rotate-12 transition-transform duration-500" />
+
+        {/* Blue Semi-Circle */}
+        <div className="absolute top-[10%] left-[30%] w-20 h-10 bg-neo-blue border-4 border-black rounded-t-full shadow-[4px_4px_0_rgba(0,0,0,1)] -rotate-12 hidden lg:block pointer-events-auto hover:scale-110 transition-transform duration-300" />
+
+        {/* Empty Dashed Circle */}
+        <div className="absolute top-[75%] left-[8%] w-20 h-20 border-[6px] border-black rounded-full border-dashed animate-[spin_15s_linear_infinite] hidden lg:block pointer-events-auto opacity-70" />
+      </div>
+
       <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10">
 
         {/* Title */}
