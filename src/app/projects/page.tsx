@@ -2,15 +2,36 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-import { FaGithub, FaGlobe, FaArrowLeft } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 import { PROJECTS, PROJECT_CATEGORIES } from '@/data/projects';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { ProjectCard, ProjectModal } from '@/components/features/ProjectSection';
+import type { Project } from '@/types';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const { ref: headerRef, inView: headerInView } = useInViewOnce({ threshold: 0.1 });
-  const { ref: gridRef,   inView: gridInView   } = useInViewOnce({ threshold: 0.05 });
+  const { ref: gridRef, inView: gridInView } = useInViewOnce({ threshold: 0.05 });
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = modalOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [modalOpen]);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setTimeout(() => setModalOpen(true), 10);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 300);
+  };
 
   const filtered =
     activeCategory === 'All'
@@ -46,9 +67,8 @@ export default function ProjectsPage() {
         {/* Header */}
         <div
           ref={headerRef}
-          className={`transition-all duration-700 ease-out ${
-            headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-          }`}
+          className={`transition-all duration-700 ease-out ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+            }`}
         >
           <Link
             href="/#project"
@@ -76,11 +96,10 @@ export default function ProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 border-2 border-black px-5 py-2 text-sm font-black uppercase transition-all hover:-translate-y-0.5 ${
-                  activeCategory === cat
+                className={`flex-shrink-0 border-2 border-black px-5 py-2 text-sm font-black uppercase transition-all hover:-translate-y-0.5 ${activeCategory === cat
                     ? 'bg-black text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]'
                     : 'bg-white text-black hover:bg-neo-pink'
-                }`}
+                  }`}
               >
                 {cat}
                 {cat === 'All' && (
@@ -91,86 +110,16 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* Project grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered.map((project, index) => (
-            <div
-              key={project.title}
-              style={{ transitionDelay: gridInView ? `${index * 100}ms` : '0ms' }}
-              className={`group relative border-4 border-black bg-white shadow-neo flex flex-col h-full
-                hover:-translate-y-2 hover:rotate-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
-                transition-all duration-500 ease-out
-                ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            >
-              {/* Featured badge */}
-              {project.featured && (
-                <div className="absolute -top-3 -right-3 z-10 bg-neo-pink border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase rotate-3 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                  Featured
-                </div>
-              )}
-
-              {/* Category + year ribbon */}
-              <div className="flex items-center justify-between border-b-2 border-black px-4 py-2 bg-neo-yellow">
-                <span className="text-[11px] font-black uppercase tracking-widest">{project.category}</span>
-                <span className="text-[11px] font-black text-black/50">{project.year}</span>
-              </div>
-
-              {/* Image */}
-              <div className="relative h-44 w-full border-b-4 border-black overflow-hidden bg-slate-100">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    const t = e.target as HTMLImageElement;
-                    t.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(project.title)}&background=random&size=500`;
-                  }}
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-lg font-black uppercase mb-2 tracking-tight group-hover:text-neo-blue transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm font-semibold text-slate-600 leading-snug mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-
-                {/* Tech pills */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.tech.map((tech) => (
-                    <span key={tech.name} className="border border-black px-2 py-0.5 text-[10px] font-black uppercase bg-slate-100">
-                      {tech.name}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Buttons */}
-                <div className="mt-auto flex gap-3">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 border-2 border-black bg-black text-white py-2.5 text-xs font-black uppercase hover:bg-neo-pink hover:text-black transition-all"
-                  >
-                    <FaGithub /> Source
-                  </a>
-                  {project.website && (
-                    <a
-                      href={project.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 border-2 border-black bg-white text-black py-2.5 text-xs font-black uppercase hover:bg-neo-blue transition-all"
-                    >
-                      <FaGlobe /> Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+        {/* Project Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {filtered.map((project, i) => (
+            <ProjectCard
+              key={project.title || i}
+              project={project}
+              index={i}
+              inView={gridInView}
+              onDetail={() => openModal(project)}
+            />
           ))}
         </div>
 
@@ -191,6 +140,11 @@ export default function ProjectsPage() {
         )}
 
       </div>
+      <ProjectModal
+        project={selectedProject}
+        isOpen={modalOpen}
+        onClose={closeModal}
+      />
     </main>
   );
 }

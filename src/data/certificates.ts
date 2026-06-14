@@ -2,9 +2,18 @@ import type { Certificate } from '@/types';
 
 export const CERTIFICATES: Certificate[] = [
   {
+    title:    'Belajar Fundamental Deep Learning',
+    issuer:   'Dicoding',
+    date:     'Jun 2026 - Jun 2029',
+    category: 'Course',
+    color:    'bg-neo-blue',
+    imageUrl: '/images/certificates/certificate-belajar-deep-learning.png',
+    link:     'https://drive.google.com/file/d/1zm4MQruHoG0wVllAa_AqnLuVmChg0pQ9/view?usp=sharing',
+  },
+  {
     title:    'Belajar Dasar AI',
     issuer:   'Dicoding',
-    date:     'Apr 2024',
+    date:     'Apr 2026 - Apr 2029',
     category: 'Course',
     color:    'bg-neo-blue',
     imageUrl: '/images/certificates/certificate-belajar-dasar-ai.png',
@@ -13,7 +22,7 @@ export const CERTIFICATES: Certificate[] = [
   {
     title:    'Belajar Machine Learning untuk Pemula',
     issuer:   'Dicoding',
-    date:     'Apr 2024',
+    date:     'Apr 2026 - Apr 2029',
     category: 'Course',
     color:    'bg-neo-green',
     imageUrl: '/images/certificates/certificate-belajar-machine-learning-untuk-pemula.png',

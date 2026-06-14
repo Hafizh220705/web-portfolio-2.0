@@ -42,7 +42,7 @@ export const VOLUNTEERS: Volunteer[] = [
        Generated analytical reports and data-driven recommendations that served as the primary basis for organizational decision-making and internal program performance evaluation.`,
     imageUrl:         '/images/organization/photo/staff-of-data-research-analysis-1.png',
     orgLogo:          '/images/organization/logo/bem-fmipa.png',
-    supportingImages: ['/images/certificates/certificate-staff-of-research-data-analysis.png'],
+    supportingImages: ['/images/certificates/certificate-staff-of-research-data-analysis.png', '/images/volunteer/photo/staff-rdat.png'],
     category:         'Organization',
     color:            'bg-neo-green',
   },
