@@ -18,9 +18,9 @@ export type TechItem = {
 };
 
 export type ProjectCategory =
-  | 'Web Dev'
+  | 'Web Development'
   | 'Machine Learning'
-  | 'Data Analysis'
+  | 'Data Analyst'
   | 'Data Scientist'
   | 'Robotics'
   | 'Computer Vision';
@@ -33,7 +33,7 @@ export type Project = {
   category: ProjectCategory;
   year: string;
   tech: TechItem[];
-  github: string;
+  github?: string;
   website?: string;
   drive?: string;
   drive2?: string;

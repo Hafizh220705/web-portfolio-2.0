@@ -16,6 +16,16 @@ export default function ProjectsPage() {
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleCategoryChange = (cat: string) => {
+    if (cat === activeCategory) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveCategory(cat);
+      setIsAnimating(false);
+    }, 300);
+  };
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -92,14 +102,18 @@ export default function ProjectsPage() {
 
           {/* Category filter — horizontal scroll on mobile to avoid overflow */}
           <div className="flex gap-3 mb-12 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 lg:mx-0 lg:px-0 lg:flex-wrap">
-            {PROJECT_CATEGORIES.map((cat) => (
+            {PROJECT_CATEGORIES.map((cat, idx) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 border-2 border-black px-5 py-2 text-sm font-black uppercase transition-all hover:-translate-y-0.5 ${activeCategory === cat
-                    ? 'bg-black text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]'
-                    : 'bg-white text-black hover:bg-neo-pink'
-                  }`}
+                onClick={() => handleCategoryChange(cat)}
+                style={{ transitionDelay: headerInView ? `${idx * 50 + 200}ms` : '0ms' }}
+                className={`flex-shrink-0 border-2 border-black px-5 py-2 text-sm font-black uppercase transition-all duration-500 ${
+                  headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } ${
+                  activeCategory === cat
+                    ? 'bg-black text-white hover:-translate-y-0.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]'
+                    : 'bg-white text-black hover:-translate-y-0.5 hover:bg-neo-pink'
+                }`}
               >
                 {cat}
                 {cat === 'All' && (
@@ -117,7 +131,7 @@ export default function ProjectsPage() {
               key={project.title || i}
               project={project}
               index={i}
-              inView={gridInView}
+              inView={gridInView && !isAnimating}
               onDetail={() => openModal(project)}
             />
           ))}
@@ -131,7 +145,7 @@ export default function ProjectsPage() {
               <p className="text-sm font-semibold text-slate-500 mt-1">Try selecting a different category.</p>
             </div>
             <button
-              onClick={() => setActiveCategory('All')}
+              onClick={() => handleCategoryChange('All')}
               className="border-2 border-black bg-neo-yellow px-6 py-2 font-black uppercase text-sm hover:bg-neo-pink hover:-translate-y-0.5 transition-all"
             >
               Show All

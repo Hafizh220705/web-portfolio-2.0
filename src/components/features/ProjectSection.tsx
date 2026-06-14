@@ -184,16 +184,18 @@ export function ProjectModal({
 
           {/* Action buttons */}
           <div className="flex gap-3 flex-wrap pt-2">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 min-w-[120px] flex items-center justify-center gap-2 border-2 border-black
-                bg-black text-white py-3 text-xs font-black uppercase
-                hover:bg-neo-pink hover:text-black transition-all"
-            >
-              <FaGithub /> Source Code
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 min-w-[120px] flex items-center justify-center gap-2 border-2 border-black
+                  bg-black text-white py-3 text-xs font-black uppercase
+                  hover:bg-neo-pink hover:text-black transition-all"
+              >
+                <FaGithub /> Source Code
+              </a>
+            )}
 
             {project.drive && (
               <a
@@ -322,17 +324,19 @@ export function ProjectCard({
           </button>
 
           {/* Source Code */}
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 border-2 border-black
-              bg-black text-white px-3 py-2.5 text-xs font-black uppercase
-              hover:bg-neo-pink hover:text-black transition-all"
-            title="Source Code"
-          >
-            <FaGithub className="text-sm" />
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 border-2 border-black
+                bg-black text-white px-3 py-2.5 text-xs font-black uppercase
+                hover:bg-neo-pink hover:text-black transition-all"
+              title="Source Code"
+            >
+              <FaGithub className="text-sm" />
+            </a>
+          )}
 
           {/* Drive (if available) */}
           {project.drive && (
