@@ -22,7 +22,8 @@ export type ProjectCategory =
   | 'Machine Learning'
   | 'Data Analyst'
   | 'Data Scientist'
-  | 'Robotics'
+  | 'Computer Graphic'
+  | 'IoT Engineer'
   | 'Computer Vision';
 
 export type Project = {

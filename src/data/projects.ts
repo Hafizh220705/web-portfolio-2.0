@@ -1,29 +1,63 @@
-import { FaCode, FaDatabase, FaPython, FaSlidersH, FaRocket } from 'react-icons/fa';
+import type { TechItem, Project } from '@/types';
+
+// react-icons/fa
+import {
+  FaChartArea,
+  FaChartBar,
+  FaChartLine,
+  FaChartPie,
+  FaCloudUploadAlt,
+  FaCode,
+  FaCompressArrowsAlt,
+  FaDatabase,
+  FaExchangeAlt,
+  FaFileAlt,
+  FaMapMarkedAlt,
+  FaMicrochip,
+  FaPercent,
+  FaPlug,
+  FaProjectDiagram,
+  FaPython,
+  FaRocket,
+  FaSitemap,
+  FaSlidersH,
+  FaSquareRootAlt,
+  FaSync,
+  FaThermometerHalf,
+  FaTree,
+} from 'react-icons/fa';
+
+// react-icons/fa6
+import { FaBrain, FaCircleNodes, FaDna, FaVectorSquare } from 'react-icons/fa6';
+
+// @icons-pack/react-simple-icons
 import {
   SiArduino,
+  SiCss,
+  SiFastapi,
+  SiFirebase,
+  SiGooglegemini,
+  SiGooglemaps,
+  SiGoogleplay,
+  SiGooglesheets,
+  SiHtml5,
+  SiHuggingface,
+  SiJavascript,
+  SiKotlin,
+  SiLangchain,
+  SiLeaflet,
+  SiMysql,
   SiNextdotjs,
+  SiNodedotjs,
   SiOllama,
   SiPandas,
+  SiReact,
   SiScikitlearn,
   SiSupabase,
   SiTensorflow,
+  SiThreedotjs,
+  SiWebgl,
 } from '@icons-pack/react-simple-icons';
-import { FaDna, FaBrain } from 'react-icons/fa6';
-import { FaChartPie, FaProjectDiagram, FaTree } from 'react-icons/fa';
-import type { TechItem, Project } from '@/types';
-import { FaFileAlt } from 'react-icons/fa';
-import { SiHuggingface, SiGooglegemini } from '@icons-pack/react-simple-icons';
-import { FaPlug, FaMicrochip } from 'react-icons/fa';
-import { FaSitemap, FaCompressArrowsAlt, FaSync } from 'react-icons/fa';
-import { FaCircleNodes } from 'react-icons/fa6';
-import { FaChartLine, FaPercent } from 'react-icons/fa';
-import { SiGoogleplay } from '@icons-pack/react-simple-icons';
-import { FaChartArea } from 'react-icons/fa';
-import { SiFastapi, SiLangchain, SiHtml5, SiJavascript } from '@icons-pack/react-simple-icons';
-import { FaVectorSquare } from 'react-icons/fa6';
-import { SiCss } from '@icons-pack/react-simple-icons';
-import { SiKotlin, SiReact, SiNodedotjs, SiFirebase, SiMysql, SiGooglemaps, SiLeaflet } from '@icons-pack/react-simple-icons';
-import { FaMapMarkedAlt } from 'react-icons/fa';
 
 const TECH: Record<string, TechItem> = {
   nextjs: { name: 'Next.js', Icon: SiNextdotjs, className: 'text-black' },
@@ -74,7 +108,18 @@ const TECH: Record<string, TechItem> = {
   mysql: { name: 'MySQL', Icon: SiMysql, className: 'text-blue-600' },
   googlemaps: { name: 'Google Maps', Icon: SiGooglemaps, className: 'text-red-500' },
   leaflet: { name: 'Leaflet', Icon: SiLeaflet, className: 'text-green-500' },
-gis: { name: 'GIS', Icon: FaMapMarkedAlt, className: 'text-teal-600' },
+  gis: { name: 'GIS', Icon: FaMapMarkedAlt, className: 'text-teal-600' },
+  webgl: { name: 'WebGL', Icon: SiWebgl, className: 'text-red-600' },
+  threejs: { name: 'Three.js', Icon: SiThreedotjs, className: 'text-black' },
+  esp32: { name: 'ESP32', Icon: FaMicrochip, className: 'text-gray-700' },
+  mqtt: { name: 'MQTT', Icon: FaExchangeAlt, className: 'text-purple-600' },
+  ubidots: { name: 'Ubidots', Icon: FaCloudUploadAlt, className: 'text-blue-500' },
+  googlesheetsapi: { name: 'Sheets API', Icon: SiGooglesheets, className: 'text-green-600' },
+  sensors: { name: 'HW Sensors', Icon: FaThermometerHalf, className: 'text-red-500' },
+  matplotlib: { name: 'Matplotlib', Icon: FaChartBar, className: 'text-blue-500' },
+  seaborn: { name: 'Seaborn', Icon: FaChartArea, className: 'text-teal-500' },
+  pearson: { name: 'Pearson Corr.', Icon: FaSquareRootAlt, className: 'text-indigo-500' },
+  linearregression: { name: 'Linear Regression', Icon: FaChartLine, className: 'text-green-600' },
 };
 
 // showOnHome: true  → tampil di homepage (ProjectSection)
@@ -312,6 +357,110 @@ export const PROJECTS: Project[] = [
       'Designed an optimized system architecture capable of processing and visualizing complex spatial crime data within < 3 seconds, ensuring rapid access to critical safety information.',
       'Established a transparent, two-way communication channel between citizens and authorities, completely digitizing the emergency reporting, location tracking, and verification process.',
       'Key Takeaways: Integrating Geographic Information Systems (GIS) with crowdsourced community data creates a highly effective public safety ecosystem. It empowers citizens to proactively avoid danger while transforming reactive policing into a proactive, data-driven strategy.',
+    ],
+    featured: false,
+    showOnHome: false,
+  },
+  {
+    title: 'Interactive Urban Air Quality Visualization (3D Heatmap) - SDGs 11 & 13',
+    description: 'A WebGL-powered interactive 3D computer graphics simulation designed to visualize urban air pollution and its spatial dispersion, serving as a digital educational medium to advocate for Sustainable Development Goals (SDGs) 11 (Sustainable Cities) and 13 (Climate Action).',
+    image: '/images/projects/computer-graphic-1.png',
+    detailImage: '/images/projects/computer-graphic-2.png',
+    category: 'Computer Graphic',
+    year: '2025',
+    tech: [TECH.javascript, TECH.webgl, TECH.threejs, TECH.html, TECH.css],
+    github: 'https://github.com/Hafizh220705/project-grafika-komputer',
+    website: '',
+    drive: 'https://drive.google.com/file/d/1dUYQeokMFHURU-4XNxiZ7bw8ajHIpX2I/view?usp=sharing',
+    problem:
+      'Hazardous air pollutants like PM2.5 and NO2 are often "invisible killers," making raw, abstract Air Quality Index (AQI) data difficult for the general public to fully comprehend. Additionally, rendering highly dynamic, interactive 3D city environments directly in web browsers without requiring external plugin installations poses significant computational and memory management challenges.',
+    solution: [
+      'Engineered a 3D terrain heatmap utilizing an Inverse Distance Weighting (IDW) algorithm and Vertex Coloring techniques to mathematically map spatial pollution concentration, visually rendering areas near industrial factories as hazardous red zones.',
+      'Developed a procedural Particle System leveraging THREE.SpriteMaterial and the HTML5 Canvas API to simulate realistic vehicle exhaust and factory smoke dynamically, avoiding the overhead of loading external image textures.',
+      'Optimized an autonomous grid-based traffic system using intelligent object recycling (fade-out, U-turn, and respawn logic) instead of heavy physics engines to strictly manage GPU memory limits.',
+      'Implemented an interactive dashboard slider that gives users real-time control over the environment, dynamically manipulating atmospheric fog density, sky colors, and AQI health warnings.',
+    ],
+    results: [
+      'Achieved a highly stable 60 FPS rendering performance on standard web browsers (Google Chrome) by leveraging Low Poly modeling, geometry re-use, and strictly capped particle counts.',
+      'Key Takeaways: Transforming abstract environmental statistics into an intuitive, real-time 3D visual experience effectively bridges the public awareness gap regarding climate action. The project proves that highly optimized WebGL applications can serve as powerful, universally accessible advocacy tools without sacrificing performance.',
+    ],
+    featured: false,
+    showOnHome: false,
+  },
+  {
+    title: 'IoT Smart Greenhouse Simulation: Microclimate Monitoring and Pest Detection',
+    description: 'A smart farming telematics system that integrates ESP32 microcontrollers with cloud computing to enable real-time, remote monitoring of greenhouse microclimates and automated pest detection.',
+    image: '/images/projects/telematika-1.png',
+    detailImage: '/images/projects/telematika-2.png',
+    category: 'IoT Engineer',
+    year: '2025',
+    tech: [TECH.esp32, TECH.mqtt, TECH.ubidots, TECH.googlesheetsapi, TECH.sensors, TECH.iot],
+    github: 'https://github.com/luthfiarsd/Smart-Greenhouse',
+    website: 'https://docs.google.com/spreadsheets/d/1hUNRFppZqqOGNOEOooXF7J7OuQnXkrbhQKa0w7Scn44/edit?usp=sharing',
+    drive: 'https://drive.google.com/file/d/1_eZXJX3dohiVw3-mHlz4-gBlDnctRj_8/view?usp=sharing',
+    problem:
+      'Conventional greenhouse management struggles to maintain stable microclimates, as unmonitored temperature or humidity fluctuations and delayed pest detection significantly degrade harvest quality. Relying on manual monitoring by farmers is highly inefficient, labor-intensive, and suffers from high latency.',
+    solution: [
+      'Engineered a complete 4-layer IoT telematics architecture (Device, Network, Platform, Application) utilizing an ESP32 microcontroller integrated with DHT11 (temperature/humidity) and PIR (motion/pest) sensors.',
+      'Implemented the lightweight MQTT publish-subscribe protocol via MicroPython to efficiently transmit real-time sensor telemetry data to the Ubidots cloud platform at 5-second intervals.',
+      'Developed a real-time monitoring ecosystem featuring a local OLED display, a Ubidots cloud dashboard, and Google Sheets webhook integration, programmed with logical thresholds (e.g., Ideal Temp: 20°C - 30°C) to autonomously classify environmental conditions as "Optimal" or "Anomaly".',
+    ],
+    results: [
+      'Successfully captured, transmitted, and logged 239 telemetry data samples with low latency, accurately updating cloud gauges and triggering hardware alerts (LED/Buzzer) when environmental thresholds were breached.',
+      'Ensured high system reliability by engineering an automated MQTT auto-reconnect mechanism to handle unstable WiFi connections and prevent data loss.',
+      'Key Takeaways: This prototype effectively democratizes precision agriculture, demonstrating that affordable open-source hardware and IoT cloud integration can empower small-scale farmers to improve crop yields through data-driven remote monitoring.',
+    ],
+    featured: false,
+    showOnHome: false,
+  },
+  {
+    title: 'Assessing the Impact of TKDD Realization on Public Welfare in Indonesia',
+    description: 'A comprehensive data analytics project exploring the relationship between the realization of Transfer to Regions and Village Funds (TKDD) and public welfare indicators—such as the Human Development Index (HDI), poverty rates, and Regional Gross Domestic Product (GRDP)—across 38 Indonesian provinces in 2023.',
+    image: '/images/projects/techfest.png',
+    detailImage: '/images/projects/techfest-2.png',
+    category: 'Data Analyst',
+    year: '2025',
+    tech: [TECH.python, TECH.pandas, TECH.matplotlib, TECH.seaborn, TECH.pearson, TECH.linearregression],
+    github: 'http://github.com/Hafizh220705/techfest-data-analytics',
+    // website: '',
+    drive: '',
+    problem:
+      'While the government allocates massive funds to regional governments through TKDD, it remains unclear whether a high volume of fund disbursement directly translates to improved public welfare. There is a critical need to evaluate if these funds are absorbed efficiently and to identify the specific socio-economic factors that truly drive human development.',
+    solution: [
+      'Processed and cleaned a comprehensive 2023 dataset (from the TECHFEST 2025 competition) containing regional APBN budgets, poverty rates, GRDP, and TKDD realization metrics for 38 provinces.',
+      'Conducted in-depth Exploratory Data Analysis (EDA) and feature engineering using Pandas, Seaborn, and Matplotlib to visualize data distributions and identify right-skewed variables indicating regional inequality.',
+      'Applied Pearson Correlation and Linear Regression algorithms to statistically measure and benchmark the impact of TKDD realization and per capita APBN budgets on regional HDI and poverty levels.',
+    ],
+    results: [
+      'Discovered that while most provinces achieved over 100% TKDD realization, the positive correlation between raw TKDD volume and HDI was surprisingly weak.',
+      'Proved statistically that HDI is much more significantly influenced by per capita APBN, the percentage of the poor population, and per capita GRDP rather than just the sheer volume of disbursed regional funds.',
+      'Key Takeaways: A massive distribution of funds does not automatically guarantee high human development. Local governments must shift their focus from mere budget absorption rates to the quality of allocation—strategically intervening in education, healthcare, and the local economy for a more equitable and impactful outcome.',
+    ],
+    featured: false,
+    showOnHome: false,
+  },
+  {
+    title: 'Halodoc App Sentiment Analysis: Convolutional Neural Network & Lexicon-Based',
+    description: 'A Natural Language Processing (NLP) project analyzing user reviews of the Halodoc digital healthcare application from the Google Play Store, combining Lexicon-Based Labeling and Convolutional Neural Network (CNN) architectures to extract actionable business insights.',
+    image: '/images/projects/halodoc-3.png',
+    detailImage: '/images/projects/halodoc-2.png',
+    category: 'Data Scientist',
+    year: '2025',
+    tech: [],
+    github: 'https://github.com/abdazizhamud/dapa-ganteng-datathon-ristek',
+    // website: '',
+    drive: 'https://drive.google.com/file/d/1tArcVrt9ty9pZ3A_9dcRkCtESZWv0AXR/view?usp=sharing',
+    problem:
+      'Despite Halodoc popularity, the platform faces significant challenges regarding a high volume of negative reviews. Manually analyzing massive amounts of unstructured, informal Indonesian text data is highly inefficient and prone to bias, making it difficult for the company to pinpoint specific operational bottlenecks and service quality issues.',
+    solution: [
+      'Processed an initial dataset of 10,000 raw Google Play Store reviews through a rigorous text cleaning and Sastrawi stemming pipeline, eliminating noise and duplicates to produce 7,332 high-quality unique entries for analysis.',
+      'Engineered a Lexicon-Based Labeling system to accurately annotate sentiments, mapping the dataset into a strict 80:20 train-test split (5,811 training records and 1,453 testing records).',
+      'Developed a Convolutional Neural Network (CNN) architecture utilizing a 128-dimension Embedding Layer, Conv1D (128 filters), and a Dropout layer (0.5 rate) to accurately classify multi-class sentiments (Positive, Negative, Neutral) from a 5,000-word vocabulary.',
+    ],
+    results: [
+      'Successfully classified the dataset, revealing that while 80.45% of users left 5-star ratings, 14.8% of the reviewed sentiments were strictly negative, exposing a polarized user experience.',
+      'Extracted actionable insights using WordCloud and frequency analysis, pinpointing slow doctor response times, payment/refund failures, and unresponsive customer service as the top critical issues.',
+      'Key Takeaways: Integrating Lexicon-based labeling with Deep Learning (CNN) provides highly precise, scalable sentiment tracking. For digital healthcare platforms, proactively detecting and resolving these specific service bottlenecks is crucial to maintaining patient trust and safety.',
     ],
     featured: false,
     showOnHome: false,

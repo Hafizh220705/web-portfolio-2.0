@@ -11,6 +11,7 @@ import type { Project } from '@/types';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [displayedCategory, setDisplayedCategory] = useState('All');
   const { ref: headerRef, inView: headerInView } = useInViewOnce({ threshold: 0.1 });
   const { ref: gridRef, inView: gridInView } = useInViewOnce({ threshold: 0.05 });
 
@@ -20,9 +21,10 @@ export default function ProjectsPage() {
 
   const handleCategoryChange = (cat: string) => {
     if (cat === activeCategory) return;
+    setActiveCategory(cat); // Instant UI update for the button
     setIsAnimating(true);
     setTimeout(() => {
-      setActiveCategory(cat);
+      setDisplayedCategory(cat); // Delayed update for the grid filter
       setIsAnimating(false);
     }, 300);
   };
@@ -44,9 +46,9 @@ export default function ProjectsPage() {
   };
 
   const filtered =
-    activeCategory === 'All'
+    displayedCategory === 'All'
       ? PROJECTS
-      : PROJECTS.filter((p) => p.category === activeCategory);
+      : PROJECTS.filter((p) => p.category === displayedCategory);
 
   return (
     // No duplicate Footer — layout.tsx already provides it
@@ -100,24 +102,26 @@ export default function ProjectsPage() {
 
           <div className="w-full border-t-4 border-black mt-8 mb-10" />
 
-          {/* Category filter — horizontal scroll on mobile to avoid overflow */}
-          <div className="flex gap-3 mb-12 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 lg:mx-0 lg:px-0 lg:flex-wrap">
+          {/* Category filter */}
+          <div className="flex flex-wrap gap-4 mb-12 pb-6 pt-2">
             {PROJECT_CATEGORIES.map((cat, idx) => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
                 style={{ transitionDelay: headerInView ? `${idx * 50 + 200}ms` : '0ms' }}
-                className={`flex-shrink-0 border-2 border-black px-5 py-2 text-sm font-black uppercase transition-all duration-500 ${
-                  headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`group flex-shrink-0 border-[3px] border-black px-6 py-2.5 text-sm font-black uppercase transition-all duration-200 ${
+                  !headerInView ? 'opacity-0 translate-y-8' : 'opacity-100'
                 } ${
                   activeCategory === cat
-                    ? 'bg-black text-white hover:-translate-y-0.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]'
-                    : 'bg-white text-black hover:-translate-y-0.5 hover:bg-neo-pink'
+                    ? 'bg-neo-pink text-black translate-x-[4px] translate-y-[4px] shadow-none'
+                    : 'bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-neo-yellow'
                 }`}
               >
                 {cat}
                 {cat === 'All' && (
-                  <span className="ml-2 bg-neo-yellow text-black px-1.5 text-xs">{PROJECTS.length}</span>
+                  <span className={`ml-2 border-2 border-black px-2 py-0.5 text-xs ${activeCategory === cat ? 'bg-white' : 'bg-neo-yellow group-hover:bg-neo-pink transition-colors'}`}>
+                    {PROJECTS.length}
+                  </span>
                 )}
               </button>
             ))}
