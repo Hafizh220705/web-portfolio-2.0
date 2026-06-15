@@ -12,7 +12,7 @@ export const HIGHLIGHTS: Highlight[] = [
   { phrase: 'business decisions',      className: 'hover:bg-neo-yellow hover:text-black'},
 ];
 
-export const RESUME_PATH = '/resume/hafizh-fadhl-muhammad-cv.pdf';
+export const RESUME_PATH = 'https://drive.google.com/file/d/1GQA2cpmQIIX6Eh2VDVjKq1kAJh1PebZv/view?usp=sharing';
 
 export const WHATSAPP_HREF = 'https://wa.me/6282290764213';
 

@@ -42,6 +42,7 @@ export type Project = {
   solution?: string[];
   results?: string[];
   featured?: boolean;
+  onProgress?: boolean;
   showOnHome?: boolean;
 };
 

@@ -94,9 +94,6 @@ export default function ProjectsPage() {
               <h1 className="inline-block border-4 border-black bg-neo-yellow px-8 py-3 text-5xl md:text-7xl font-black uppercase tracking-tighter shadow-neo -rotate-1">
                 All Projects
               </h1>
-              <p className="mt-5 font-black text-black/60 uppercase tracking-widest text-sm">
-                {PROJECTS.length} projects · Data Science & Engineering
-              </p>
             </div>
           </div>
 

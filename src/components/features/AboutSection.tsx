@@ -79,7 +79,8 @@ function CTAButtons() {
 
       <a
         href={RESUME_PATH}
-        download
+        target="_blank"
+        rel="noopener noreferrer"
         className="flex items-center gap-2 border-2 border-black bg-neo-blue px-4 py-2 md:px-5
           md:py-2.5 text-[10px] md:text-xs lg:text-sm font-black uppercase text-white
           shadow-neo-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-neo"

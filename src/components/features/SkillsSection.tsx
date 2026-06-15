@@ -1,7 +1,14 @@
 'use client';
 
 import { useInViewOnce } from '@/hooks/useInViewOnce';
-import { DATA_SCIENCE_SKILLS, PROGRAMMING_LANGUAGES } from '@/data/skills';
+import {
+  PROGRAMMING_LANGUAGES,
+  ML_FRAMEWORKS,
+  DATA_ANALYSIS,
+  DATA_VISUALIZATION,
+  COMPUTER_VISION,
+  NLP_SKILLS,
+} from '@/data/skills';
 import type { SkillItem } from '@/types';
 
 function SkillCard({ skill }: { skill: SkillItem }) {
@@ -48,6 +55,11 @@ function MarqueeTrack({
 export default function SkillsSection() {
   const { ref, inView } = useInViewOnce({ threshold: 0.08 });
 
+  // Combine categories into 3 rows for better layout
+  const track1 = [...PROGRAMMING_LANGUAGES, ...DATA_VISUALIZATION];
+  const track2 = [...ML_FRAMEWORKS, ...COMPUTER_VISION];
+  const track3 = [...DATA_ANALYSIS, ...NLP_SKILLS];
+
   return (
     <section
       id="skills"
@@ -75,8 +87,9 @@ export default function SkillsSection() {
             ${inView ? 'opacity-100' : 'opacity-0'}`}
         >
           <div className="flex flex-col gap-8 md:gap-12">
-            <MarqueeTrack skills={DATA_SCIENCE_SKILLS} direction="left"  />
-            <MarqueeTrack skills={PROGRAMMING_LANGUAGES} direction="right" />
+            <MarqueeTrack skills={track1} direction="left"  />
+            <MarqueeTrack skills={track2} direction="right" />
+            <MarqueeTrack skills={track3} direction="left"  />
           </div>
         </div>
 

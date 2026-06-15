@@ -63,12 +63,20 @@ export function ProjectModal({
               text-[10px] font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)]">
               {project.category}
             </span>
-            {project.featured && (
-              <span className="absolute top-3 right-3 border-2 border-black bg-neo-pink px-3 py-0.5
-                text-[10px] font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)] rotate-2">
-                Featured
-              </span>
-            )}
+            <div className="absolute top-3 right-3 flex flex-col gap-2 items-end">
+              {project.featured && (
+                <span className="border-2 border-black bg-neo-pink px-3 py-0.5
+                  text-[10px] font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)] rotate-2">
+                  Featured
+                </span>
+              )}
+              {project.onProgress && (
+                <span className="border-2 border-black bg-neo-green text-black px-3 py-0.5
+                  text-[10px] font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)] -rotate-2">
+                  On Progress
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Detail image */}
@@ -272,12 +280,20 @@ export function ProjectCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        {project.featured && (
-          <div className="absolute top-3 left-3 border-2 border-black bg-neo-pink px-2 py-0.5
-            text-[10px] font-black uppercase rotate-[-2deg] shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            Featured
-          </div>
-        )}
+        <div className="absolute top-3 left-3 flex flex-col gap-2 items-start">
+          {project.featured && (
+            <div className="border-2 border-black bg-neo-pink px-2 py-0.5
+              text-[10px] font-black uppercase rotate-[-2deg] shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+              Featured
+            </div>
+          )}
+          {project.onProgress && (
+            <div className="border-2 border-black bg-neo-green text-black px-2 py-0.5
+              text-[10px] font-black uppercase rotate-[2deg] shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+              On Progress
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Content */}
