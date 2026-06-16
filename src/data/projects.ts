@@ -31,6 +31,7 @@ import {
   FaTh,
   FaThermometerHalf,
   FaTree,
+  FaWaveSquare,
 } from 'react-icons/fa';
 
 // react-icons/fa6
@@ -64,6 +65,7 @@ import {
   SiTensorflow,
   SiThreedotjs,
   SiWebgl,
+  SiPytorch,
 } from '@icons-pack/react-simple-icons';
 
 const TECH: Record<string, TechItem> = {
@@ -134,6 +136,10 @@ const TECH: Record<string, TechItem> = {
   lexicon: { name: 'Lexicon Labeling', Icon: FaBook, className: 'text-amber-600' },
   textpreprocessing: { name: 'Text Preprocessing', Icon: FaFilter, className: 'text-slate-600' },
   wordcloud: { name: 'WordCloud', Icon: FaCloud, className: 'text-sky-500' },
+  pytorch: { name: 'PyTorch', Icon: SiPytorch, className: 'text-orange-600' },
+  mne: { name: 'MNE-Python', Icon: FaBrain, className: 'text-purple-600' },
+  dsp: { name: 'DSP', Icon: FaWaveSquare, className: 'text-blue-500' },
+  eeg: { name: 'Muse S EEG', Icon: FaBrain, className: 'text-teal-500' },
 };
 
 // showOnHome: true  → tampil di homepage (ProjectSection)
@@ -218,6 +224,31 @@ export const PROJECTS: Project[] = [
     ],
     featured: true,
     showOnHome: true,
+  },
+  {
+    title: 'End-to-End Deep Learning for EEG-Based Cognitive Engagement Classification',
+    description: 'An AI research project developed during an internship at the Center for Teaching and Learning Innovation (PIPP) Universitas Padjadjaran, aimed at classifying students cognitive engagement (Focus vs. Relaxed) using brainwave signals extracted from a consumer-grade wearable EEG device.',
+    image: '/images/projects/eeg-1.png',
+    detailImage: '/images/projects/eeg-2.png',
+    category: 'Data Scientist',
+    year: '2025',
+    tech: [TECH.python, TECH.pytorch, TECH.mne, TECH.scikitlearn, TECH.xgboost, TECH.dsp, TECH.eeg],
+    github: 'https://colab.research.google.com/drive/1VXMjrR0eoJP42pU-a3-bkpNlH_qbcKBC?usp=sharing',
+    website: 'https://survey-neuro-ai.vercel.app/',
+    problem:
+      'Traditional methods of measuring student engagement, such as self-reporting or visual observation, are highly subjective and lack real-time cognitive insights. Meanwhile, processing raw Electroencephalography (EEG) signals from low-cost, 4-channel consumer wearables (Muse S) is mathematically challenging due to non-stationary data, severe physiological noise (e.g., eye blinks), and high inter-subject variability.',
+    solution: [
+      'Processed and sanitized raw brainwave signals using MNE-Python by applying 0.5-45 Hz Bandpass filters, 50 Hz Notch filters, and Independent Component Analysis (ICA) to successfully eliminate eye-blink and muscle artifacts without losing critical cognitive data.',
+      'Engineered a balanced dataset of 9,464 2-second epochs (48.6% Class 0 and 51.4% Class 1) by extracting Power Spectral Density (PSD) features across Alpha and Beta frequency bands using Welch Method.',
+      'Architected and benchmarked an End-to-End Multi-Layer Perceptron (MLP) Deep Learning model via PyTorch against traditional ML baselines (SVM, XGBoost, Random Forest), utilizing rigorous Leave-One-Subject-Out (LOSO) and Leave-One-Video-Out (LOVO) cross-validation strategies to ensure true model generalization.',
+    ],
+    results: [
+      'Achieved an average generalization accuracy of 51.08% in the highly challenging, subject-independent (LOSO) scenario, producing a perfectly balanced Macro F1-Score of 0.50.',
+      'Outperformed the Hybrid Autoencoder + XGBoost approach (50.87%) and the Random Forest baseline (49.49%), proving the MLP capability to natively learn complex spatial-temporal features.',
+      'Key Takeaways: End-to-end Deep Learning can effectively replace complex, hand-crafted feature engineering in biomedical signal processing, achieving highly competitive results (with only a 0.18% gap from the best SVM baseline) even when restricted to noisy, 4-channel consumer-grade EEG devices.',
+    ],
+    featured: false,
+    showOnHome: false,
   },
   {
     title: 'Real-Time Hand-Tracked Angklung Robot',
