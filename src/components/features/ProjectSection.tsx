@@ -315,7 +315,7 @@ export function ProjectCard({
         </p>
 
         {/* Tech stack icons */}
-        <div className="flex items-center gap-4 mb-6 text-2xl">
+        <div className="flex flex-wrap items-center gap-4 mb-6 text-2xl">
           {project.tech.map((tech) => (
             <span
               key={tech.name}

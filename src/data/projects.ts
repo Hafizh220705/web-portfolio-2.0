@@ -32,6 +32,7 @@ import {
   FaThermometerHalf,
   FaTree,
   FaWaveSquare,
+  FaClock,
 } from 'react-icons/fa';
 
 // react-icons/fa6
@@ -66,6 +67,10 @@ import {
   SiThreedotjs,
   SiWebgl,
   SiPytorch,
+  SiNestjs, 
+  SiTypescript, 
+  SiPrisma, 
+  SiJsonwebtokens,
 } from '@icons-pack/react-simple-icons';
 
 const TECH: Record<string, TechItem> = {
@@ -140,6 +145,12 @@ const TECH: Record<string, TechItem> = {
   mne: { name: 'MNE-Python', Icon: FaBrain, className: 'text-purple-600' },
   dsp: { name: 'DSP', Icon: FaWaveSquare, className: 'text-blue-500' },
   eeg: { name: 'Muse S EEG', Icon: FaBrain, className: 'text-teal-500' },
+  nestjs: { name: 'NestJS', Icon: SiNestjs, className: 'text-red-600' },
+  typescript: { name: 'TypeScript', Icon: SiTypescript, className: 'text-[#3178C6]' },
+  prisma: { name: 'Prisma ORM', Icon: SiPrisma, className: 'text-slate-800' },
+  cronjobs: { name: 'Cron Jobs', Icon: FaClock, className: 'text-gray-600' },
+  jwt: { name: 'JWT', Icon: SiJsonwebtokens, className: 'text-pink-600' },
+  ridgeregression: { name: 'Ridge Regression', Icon: FaChartLine, className: 'text-indigo-500' },
 };
 
 // showOnHome: true  → tampil di homepage (ProjectSection)
@@ -590,22 +601,27 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'FromFram',
-    description: '',
+    description: 'A subscription-based meal kit platform designed to deliver fresh, pre-portioned ingredients paired with nutritionist-validated recipes. The platform is integrated with a standalone AI Demand Forecasting microservice to accurately predict weekly raw material requirements.',
     image: '/images/projects/fromfram.png',
     detailImage: '/images/projects/fromfram-2.png',
     category: 'Web Development',
     year: '2026',
-    tech: [],
+    tech: [TECH.nextjs, TECH.nestjs, TECH.typescript, TECH.prisma, TECH.postgresql, TECH.python, TECH.fastapi, TECH.scikitlearn, TECH.ridgeregression, TECH.cronjobs, TECH.jwt],
     github: 'http://github.com/deontmba/fromfram',
     website: 'https://fromfram.vercel.app/',
     // drive: '',
     problem:
-      '',
+      'Instant food delivery services often contribute to significant food waste. On the supply chain side, partner farmers face highly uncertain weekly demand, leading to potential food loss and financial deficits due to overstocking. Furthermore, platform administrators struggle to generate accurate Purchase Orders (POs) without a data-driven system.',
     solution: [
-      '',
+      'Architected a robust backend infrastructure utilizing Next.js, NestJS, Prisma ORM, and a centralized PostgreSQL database (Supabase) to manage a complex 20-table schema encompassing user profiles, nutritional data, transactions, and logistics tracking.',
+      'Engineered an automated logistics workflow using scheduled Cron Jobs to execute weekly menu auto-assignments and systematically update delivery statuses (from Preparing to Shipped and Delivered) without manual intervention.',
+      'Developed a standalone AI Demand Forecasting microservice using Python and FastAPI, securely communicating with the main backend via REST API. The model combines deterministic calculations with Scikit-Learn Ridge Regression algorithm to adaptively predict future ingredient demand based on historical data.',
+      'Implemented strict security protocols, utilizing bcrypt (minimum cost factor of 10) for password hashing and JSON Web Tokens (JWT) for secure API access, alongside integrating a simulated QRIS transaction system for subscription activation.',
     ],
     results: [
-      '',
+      'Minimized the risk of food waste and overstocking at the partner farmer level through highly accurate, AI-driven material forecasting.',
+      'Generated automated, data-driven Purchase Order (PO) summaries equipped with confidence scores, empowering administrators to execute accurate and rapid supply validations via the dashboard.',
+      'Key Takeaways: Adopting a microservice architecture to decouple machine learning operations from the main backend results in a highly modular, scalable, and easily testable system. Additionally, Ridge Regression proved highly effective in maintaining predictive stability on smaller datasets without suffering from overfitting.',
     ],
     featured: false,
     onProgress: true,
