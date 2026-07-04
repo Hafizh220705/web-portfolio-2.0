@@ -24,6 +24,8 @@ export type ProjectCategory =
   | 'Data Scientist'
   | 'Computer Graphic'
   | 'IoT Engineer'
+  | 'Game Developer'
+  | 'Data Warehouse'
   | 'Computer Vision';
 
 export type Project = {
