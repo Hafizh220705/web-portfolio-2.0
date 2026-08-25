@@ -110,7 +110,7 @@ export default function Footer() {
             </h4>
             <div className="border-2 border-black bg-neo-green p-4 shadow-neo-sm">
               <p className="text-[10px] font-black uppercase mb-1">Current Base:</p>
-              <p className="text-xs font-bold font-jakarta">Indonesia, Bandung</p>
+              <p className="text-xs font-bold font-jakarta">Indonesia, Jakarta</p>
               <div className="mt-4 pt-3 border-t-2 border-black/10">
                 <p className="text-[10px] font-black uppercase mb-1">Availability:</p>
                 <p className="text-xs font-bold font-jakarta">Open for Internships 2026</p>

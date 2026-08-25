@@ -7,7 +7,7 @@ export const EDUCATION: Education[] = [
     location:   'Sumedang, West Java, Indonesia',
     duration:   'Aug 2023 – Present (Expected 2027)',
     scoreLabel: 'Cumulative GPA',
-    score:      '3.78 / 4.00',
+    score:      '3.81 / 4.00',
     logoUrl:    '/images/education/unpad.png',
     details: [
       'Relevant Coursework: Statistics, Data Mining, Artificial Intelligence, Decision Support Systems, Database Systems I & II, System Information, Operations Research, Numerical Methods, Linear Algebra.',

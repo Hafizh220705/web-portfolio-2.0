@@ -2,6 +2,32 @@ import type { Experience } from '@/types';
 
 export const EXPERIENCES: Experience[] = [
   {
+    title:       'Business Operations',
+    company:     'PT United Tractors Tbk',
+    date:        'August 2026 – Present',
+    category:    'Internship',
+    description: [
+      
+    ],
+    color:       'bg-neo-green',
+    imageUrl:    '/images/experiences/photo/ut-2.png',
+    supportingImages: ['/images/experiences/photo/ut-1.png', '/images/experiences/photo/ut-4.png'],
+    companyLogo: '/images/experiences/logo/ut.png',
+  },
+  {
+    title:       'AI Engineering',
+    company:     'Coding Camp powered by DBS Foundation',
+    date:        'Feb 2026 – July 2026',
+    category:    'Internship',
+    description: [
+      
+    ],
+    color:       'bg-neo-pink',
+    imageUrl:    '',
+    supportingImages: ['', ''],
+    companyLogo: '/images/experiences/logo/dbs.png',
+  },
+  {
     title:       'Data Scientist',
     company:     'Pusat Inovasi Pengajaran dan Pembelajaran (PIPP) Unpad',
     date:        'Sep 2025 – Dec 2025',

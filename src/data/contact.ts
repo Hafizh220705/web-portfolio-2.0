@@ -19,8 +19,8 @@ export const CONTACT_ITEMS: ContactItem[] = [
     iconName: 'location',
     color:    'bg-neo-blue',
     label:    'Location',
-    value:    'Indonesia, Bandung',
-    href:     'https://maps.google.com/?q=Bandung,Indonesia',
+    value:    'Indonesia, Jakarta',
+    href:     'https://maps.google.com/?q=Jakarta,Indonesia',
   },
 ];
 
